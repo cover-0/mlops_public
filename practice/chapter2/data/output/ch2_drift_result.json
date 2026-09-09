@@ -1,13 +1,13 @@
 {
   "column": "pm10Value",
-  "baseline_time": "2026-06-28 22:00",
-  "current_time": "2026-06-28 23:00",
-  "baseline_n": 40,
-  "current_n": 40,
-  "baseline_mean": 20.025,
-  "current_mean": 20.775,
-  "ks_statistic": 0.175,
-  "p_value": 0.5786001416508443,
+  "baseline_time": "2026-09-09 17:00",
+  "current_time": "2026-09-09 18:00",
+  "baseline_n": 36,
+  "current_n": 39,
+  "baseline_mean": 17.333,
+  "current_mean": 15.846,
+  "ks_statistic": 0.3162,
+  "p_value": 0.03612650008438283,
   "alpha": 0.05,
-  "drift_detected": false
+  "drift_detected": true
 }

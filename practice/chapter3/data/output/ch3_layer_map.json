@@ -1,6 +1,6 @@
 {
-  "source_plan": "C:\\Users\\user\\Documents\\lee\\class\\2026-2\\mlops_public\\practice\\chapter3\\data\\output\\ch3_compose_plan.json",
-  "generated_from": "2026-09-13T06:29:08+00:00",
+  "source_plan": "C:\\Users\\th030\\OneDrive\\문서\\class2MLOps\\mlops_public\\practice\\chapter3\\data\\output\\ch3_compose_plan.json",
+  "generated_from": "2026-09-20T13:43:13+00:00",
   "rule": {
     "zookeeper": "수집",
     "kafka": "수집",

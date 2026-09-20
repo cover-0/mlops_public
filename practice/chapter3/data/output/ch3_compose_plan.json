@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-13T14:13:39+00:00",
-  "compose_path": "C:\\Users\\user\\Documents\\lee\\class\\2026-2\\mlops_public\\practice\\chapter3\\docker-compose.yml",
+  "generated_at": "2026-09-20T13:43:13+00:00",
+  "compose_path": "C:\\Users\\th030\\OneDrive\\문서\\class2MLOps\\mlops_public\\practice\\chapter3\\docker-compose.yml",
   "services": {
     "zookeeper": {
       "image": "confluentinc/cp-zookeeper:7.5.0",

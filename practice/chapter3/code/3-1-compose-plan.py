@@ -53,7 +53,7 @@ def extract_host_ports(port_mappings: list[str]) -> list[int]:
 
 def risk_checks(services: dict[str, Any]) -> dict[str, Any]:
     """
-    교재용 최소 보안 체크(정적):
+    최소 보안 체크(정적):
     - DB 패스워드가 기본값인지(placeholder)
     - 민감 포트 노출 여부(0.0.0.0 바인딩 추정)
     """
@@ -125,8 +125,66 @@ def main() -> int:
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(plan, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    report(plan, services)
     print(f"output={OUTPUT_PATH} services={len(service_summaries)}")
     return 0
+
+
+def count_declared_dependencies(services: dict[str, Any]) -> tuple[int, list[str]]:
+    """compose 원본에 적힌 depends_on 관계 수를 센다.
+
+    이 스크립트의 파서는 리스트 형태(`depends_on: [a, b]`)만 읽는다.
+    헬스체크 조건을 붙인 맵 형태(`depends_on: {a: {condition: ...}}`)는
+    산출물에 들어가지 않으므로, 원본 개수를 따로 세어 차이를 드러낸다.
+    """
+    total = 0
+    map_form: list[str] = []
+    for name, svc in services.items():
+        if not isinstance(svc, dict):
+            continue
+        deps = svc.get("depends_on")
+        if isinstance(deps, list):
+            total += len([d for d in deps if isinstance(d, str)])
+        elif isinstance(deps, dict):
+            total += len(deps)
+            map_form.append(name)
+    return total, map_form
+
+
+def report(plan: dict[str, Any], services: dict[str, Any]) -> None:
+    """본문 인용용 구간별 출력. 계산은 하지 않고 plan의 값을 그대로 보여 준다."""
+    summaries = plan["services"]
+    host_ports = plan["host_ports"]
+    warnings = plan["security_checks"]["warnings"]
+
+    print("[1] compose 파일")
+    print(f"    경로      : {plan['compose_path']}")
+    print(f"    생성 시각 : {plan['generated_at']}")
+
+    print(f"\n[2] 서비스 {len(summaries)}개")
+    for name, info in summaries.items():
+        ports = ", ".join(info["ports"]) if info["ports"] else "-"
+        print(f"    {name:<12} {info['image']:<36} ports={ports}")
+
+    print(f"\n[3] 호스트 포트 {len(host_ports)}개")
+    print("    " + " ".join(str(p) for p in host_ports))
+    multi = [n for n, i in summaries.items() if len(i["ports"]) > 1]
+    for name in multi:
+        print(f"    서비스 하나가 포트 둘을 엶: {name} → {', '.join(summaries[name]['ports'])}")
+
+    extracted = [(n, d) for n, i in summaries.items() for d in i["depends_on"]]
+    declared, map_form = count_declared_dependencies(services)
+    print(f"\n[4] 의존성 — 추출 {len(extracted)}건 / 원본 {declared}건")
+    for name, dep in extracted:
+        print(f"    추출됨   : {name} → {dep}")
+    for name in map_form:
+        print(f"    누락됨   : {name} (depends_on이 맵 형태여서 이 파서가 읽지 않음)")
+
+    print(f"\n[5] 보안 점검 — 경고 {len(warnings)}건")
+    for w in warnings:
+        print(f"    {w}")
+    print()
 
 
 if __name__ == "__main__":

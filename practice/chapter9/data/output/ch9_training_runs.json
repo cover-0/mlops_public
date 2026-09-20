@@ -1,0 +1,98 @@
+{
+  "cross_check_with_sklearn": [
+    {
+      "equal": true,
+      "field": "baseline_mean train_mae",
+      "hand_computed": 1.0,
+      "recorded": 1.0
+    },
+    {
+      "equal": true,
+      "field": "linear train_mae",
+      "hand_computed": 1.0455,
+      "recorded": 1.0455
+    },
+    {
+      "equal": true,
+      "field": "linear slope",
+      "hand_computed": 0.4091,
+      "recorded": 0.4091
+    },
+    {
+      "equal": true,
+      "field": "linear intercept",
+      "hand_computed": 3.6818,
+      "recorded": 3.6818
+    }
+  ],
+  "data_fingerprint_sha256": "96f6b6b3ce9dcdd1da62e0284e0ceea1ec2afec24c522f6df3221ad0ab31f49e",
+  "input_changed_one_cell": {
+    "baseline_mean_train_mae": 1.2222,
+    "data_fingerprint_sha256": "07060a30f8e15e7b8b4f92e502f8acaf2403f0a85118cb5de2b096b364abaa34",
+    "linear_slope": 0.3182,
+    "linear_train_mae": 1.2576
+  },
+  "reproducibility": {
+    "coef_equal": true,
+    "mae_equal": true
+  },
+  "runs": {
+    "baseline_mean": {
+      "candidate": "baseline_mean",
+      "const": 6.0,
+      "params": {
+        "model_type": "평균 예측기",
+        "n_samples": 6
+      },
+      "residuals": [
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        3.0,
+        0.0
+      ],
+      "train_mae": 1.0
+    },
+    "linear": {
+      "candidate": "linear",
+      "intercept": 3.6818,
+      "intercept_fraction": "81/22",
+      "params": {
+        "model_type": "최소제곱 선형회귀",
+        "n_samples": 6
+      },
+      "residuals": [
+        0.7273,
+        0.2727,
+        0.7273,
+        0.7273,
+        2.8636,
+        0.9545
+      ],
+      "slope": 0.4091,
+      "slope_fraction": "9/22",
+      "train_mae": 1.0455
+    },
+    "linear_rerun": {
+      "candidate": "linear",
+      "intercept": 3.6818,
+      "intercept_fraction": "81/22",
+      "params": {
+        "model_type": "최소제곱 선형회귀",
+        "n_samples": 6
+      },
+      "residuals": [
+        0.7273,
+        0.2727,
+        0.7273,
+        0.7273,
+        2.8636,
+        0.9545
+      ],
+      "slope": 0.4091,
+      "slope_fraction": "9/22",
+      "train_mae": 1.0455
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "file": "verify_numbers.py",
+  "chapter_relpath": "practice\\chapter14\\code\\verify_numbers.py",
+  "started_at": "2026-09-13T16:43:29.233581+09:00",
+  "duration_sec": 0.17,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "4462bac13cd5f98a85056cd970a280a4a5f7305e8313960b4f468ee12f5cb205",
+  "output_sha256": "9b439ddc7ad25ee2c3bedf0cb698d6fc80f4b5e8330db6d31cb5e9516f562d19",
+  "output_log": "practice\\chapter14\\results\\verify_numbers.log"
+}

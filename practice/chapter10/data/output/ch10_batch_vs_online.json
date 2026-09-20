@@ -1,0 +1,86 @@
+{
+  "batch_failure": {
+    "errors": 0,
+    "queries": 3,
+    "stale_gap": {
+      "challenger": {
+        "11680": 0.8181
+      },
+      "champion": {}
+    },
+    "status_code": 200
+  },
+  "batch_tables": {
+    "challenger": {
+      "prev": {
+        "as_of": "2026-07-02",
+        "rows": {
+          "11440": 5.7273,
+          "11620": 5.7273,
+          "11680": 6.1364
+        }
+      },
+      "today": {
+        "as_of": "2026-07-03",
+        "rows": {
+          "11440": 5.7273,
+          "11620": 5.7273,
+          "11680": 6.9545
+        }
+      }
+    },
+    "champion": {
+      "prev": {
+        "as_of": "2026-07-02",
+        "rows": {
+          "11440": 6.0,
+          "11620": 6.0,
+          "11680": 6.0
+        }
+      },
+      "today": {
+        "as_of": "2026-07-03",
+        "rows": {
+          "11440": 6.0,
+          "11620": 6.0,
+          "11680": 6.0
+        }
+      }
+    }
+  },
+  "inputs": {
+    "districts": [
+      "11440",
+      "11620",
+      "11680"
+    ],
+    "note": "조회 날짜는 구성값 — 원자료에 조회 시각이 없다",
+    "pairs": 6,
+    "prev_day": {
+      "as_of": "2026-07-02",
+      "x_prev_count": {
+        "11440": 5,
+        "11620": 5,
+        "11680": 6
+      }
+    },
+    "today": {
+      "as_of": "2026-07-03",
+      "x_prev_count": {
+        "11440": 5,
+        "11620": 5,
+        "11680": 8
+      }
+    }
+  },
+  "models": {
+    "challenger_intercept": 3.6818,
+    "challenger_slope": 0.4091,
+    "champion_mean": 6.0
+  },
+  "online_failure": {
+    "errors": 3,
+    "queries": 3
+  },
+  "staleness_detectable_by_as_of": true
+}

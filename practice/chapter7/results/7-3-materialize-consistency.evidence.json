@@ -1,0 +1,14 @@
+{
+  "file": "7-3-materialize-consistency.py",
+  "chapter_relpath": "practice\\chapter7\\code\\7-3-materialize-consistency.py",
+  "started_at": "2026-09-13T15:47:17.274899+09:00",
+  "duration_sec": 0.11,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "cd130b55109ba14850451c81546c07749e39d742eac7169654fe4ee441909bef",
+  "output_sha256": "62c054850995e2a9b00d0e3b4044537a0287b17eb4f6a4ba913e7ea228ef59a8",
+  "output_log": "practice\\chapter7\\results\\7-3-materialize-consistency.log"
+}

@@ -112,6 +112,39 @@ def run_eda(df: pd.DataFrame) -> dict[str, Any]:
     }
 
 
+GRADE_COLS = ["pm10Grade", "pm25Grade", "khaiGrade"]
+RAW_COLS = MEASURE_COLS + ["khaiValue"]
+
+
+def _is_blank(v: Any) -> bool:
+    """API가 쓰는 결측 표기를 한 곳에서 판정한다: None / '' / '-'."""
+    return v is None or (isinstance(v, str) and v.strip() in {"", "-"})
+
+
+def print_field_missing(df: pd.DataFrame, items: list[dict[str, Any]]) -> None:
+    """산출물 스키마는 그대로 두고, 화면에만 필드별 결측 대조를 출력한다."""
+    times = sorted({str(r.get("dataTime")) for r in items})
+    print(f"\n[측정 시각] 서로 다른 dataTime {len(times)}개 — {', '.join(times)}")
+
+    print("[결측 대조] 필드별 결측 건수 (결측 표기: None / '' / '-')")
+    for col in RAW_COLS + GRADE_COLS:
+        n_blank = sum(1 for r in items if _is_blank(r.get(col)))
+        print(f"    {col:<12} 결측 {n_blank}건 / {len(items)}건")
+
+    gap = [
+        str(r.get("stationName"))
+        for r in items
+        if not _is_blank(r.get("pm10Value")) and _is_blank(r.get("pm10Grade"))
+    ]
+    print(f"[값은 있는데 등급이 없는 측정소] {len(gap)}곳 — {', '.join(gap) if gap else '없음'}")
+    for r in items:
+        if str(r.get("stationName")) in gap:
+            print(
+                f"    {r.get('stationName')}  pm10Value={r.get('pm10Value')!r}  "
+                f"pm10Grade={r.get('pm10Grade')!r}  khaiValue={r.get('khaiValue')!r}"
+            )
+
+
 def write_json(path: Path, obj: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -146,6 +179,7 @@ def main(argv: list[str]) -> int:
     )
     print("\n[pm10_summary]", json.dumps(summary["pm10_summary"], ensure_ascii=False))
     print("[pm10_grade_counts]", json.dumps(summary["pm10_grade_counts"], ensure_ascii=False))
+    print_field_missing(df, items)
     return 0
 
 

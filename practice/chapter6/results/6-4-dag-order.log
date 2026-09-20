@@ -1,0 +1,37 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 6-4-dag-order.py
+
+=== STDOUT ===
+[1] 의존성 선언에서 나오는 실행 순서
+    validate_input → clean_and_map → aggregate_daily → check_quality → write_report
+    순서가 정해진 쌍 9개 / 정해지지 않은 쌍 1개
+    순서 없음: aggregate_daily 와 check_quality — 실행마다 선후가 달라질 수 있음
+
+[2] 2026-07-01 — 입력이 있는 날
+     dagrun=success
+    validate_input   success          
+    clean_and_map    success          
+    aggregate_daily  success          
+    check_quality    success          
+    write_report     success          
+    남은 산출물 6개: validated.json, cleaned.jsonl, quality.json, daily_summary.json, quality_check.json, report.md
+
+[3] 2026-07-04 — 입력 파일이 없는 날
+     dagrun=failed
+    validate_input   failed           FileNotFoundError: 입력 파일 없음: 2026-07-04.jsonl
+    clean_and_map    upstream_failed  validate_input 이(가) 끝나지 않음
+    aggregate_daily  upstream_failed  clean_and_map 이(가) 끝나지 않음
+    check_quality    upstream_failed  clean_and_map 이(가) 끝나지 않음
+    write_report     upstream_failed  aggregate_daily 이(가) 끝나지 않음
+    남은 산출물 0개: 없음
+
+[4] 정제에 누락 결함을 심은 2026-07-01 — 품질 게이트가 막는가
+    주입한 결함: 매핑 실패 건수를 세지 않고 버린다(drop_silently=True)
+     dagrun=failed
+    validate_input   success          
+    clean_and_map    success          
+    aggregate_daily  success          
+    check_quality    failed           ValueError: 총계 보존 실패: 20 ≠ 18 + 1 + 0 + 0
+    write_report     upstream_failed  check_quality 이(가) 끝나지 않음
+    남은 산출물 4개: validated.json, cleaned.jsonl, quality.json, daily_summary.json
+
+=== STDERR ===

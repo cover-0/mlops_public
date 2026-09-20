@@ -1,0 +1,31 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 7-1-feature-store-minimal.py
+
+=== STDOUT ===
+
+=== STDERR ===
+Traceback (most recent call last):
+  File "C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter7\code\7-1-feature-store-minimal.py", line 274, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter7\code\7-1-feature-store-minimal.py", line 226, in main
+    source_path = build_source_parquet()
+  File "C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter7\code\7-1-feature-store-minimal.py", line 63, in build_source_parquet
+    df.to_parquet(path, index=False)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\core\frame.py", line 3135, in to_parquet
+    return to_parquet(
+        self,
+    ...<7 lines>...
+        **kwargs,
+    )
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\parquet.py", line 486, in to_parquet
+    impl = get_engine(engine)
+  File "C:\Users\user\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pandas\io\parquet.py", line 68, in get_engine
+    raise ImportError(
+    ...<7 lines>...
+    )
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.

@@ -1,0 +1,57 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 4-3-deduplicate-events.py
+
+=== STDOUT ===
+[1] 입력 — 처리 기록 40건, 고유 event_id 30개
+    출처: data\input\ch4_alo_duplicate_stream.jsonl
+    두 번 나타난 event_id 10개
+    alo-000003 alo-000007 alo-000008 alo-000009 alo-000010 alo-000012 alo-000014 alo-000022 alo-000027 alo-000030
+    예) alo-000003  partition 0 offset 0 — 같은 위치가 두 번 처리됨
+        1차 2026-07-07T01:59:20.513309+00:00
+        2차 2026-07-07T01:59:35.717570+00:00  (간격 15.2초)
+
+[2] 저장 전략별 결과
+    단계                        행 수  관찰 지표
+    A 제약 없는 INSERT             40  중복 행 10
+    B UNIQUE + OR IGNORE           30  무시된 중복 10
+    C UPSERT DO UPDATE             30  총 관찰 40 / 재관찰 이벤트 10
+    D C에 같은 스트림 재투입       30  총 관찰 80 / 재관찰 이벤트 30
+
+[3] 업무 상태 지문 — event_id·partition·offset·first_seen_at
+    C  eed1522a7ca844bd
+    D  eed1522a7ca844bd
+    일치: 예 — 총 관찰은 40에서 80으로 늘었지만 행 수는 30으로 그대로임
+
+{
+  "generated_at": "2026-09-13T06:44:44.953787+00:00",
+  "input": {
+    "path": "data\\input\\ch4_alo_duplicate_stream.jsonl",
+    "provenance": "4장 실습 4.1 시나리오 C(at-least-once 크래시)의 실측 처리 기록 스냅샷",
+    "records": 40,
+    "distinct_event_ids": 30
+  },
+  "A_naive_insert": {
+    "rows": 40,
+    "distinct_event_ids": 30,
+    "duplicate_rows": 10
+  },
+  "B_unique_or_ignore": {
+    "rows": 30,
+    "ignored_duplicates": 10
+  },
+  "C_upsert_do_update": {
+    "rows": 30,
+    "total_observations": 40,
+    "reobserved_events": 10,
+    "business_state_fingerprint": "eed1522a7ca844bd"
+  },
+  "D_replay_full_stream": {
+    "rows": 30,
+    "total_observations": 80,
+    "reobserved_events": 30,
+    "business_state_fingerprint": "eed1522a7ca844bd"
+  }
+}
+
+[저장] C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter4\data\output\ch4_dedup_report.json
+
+=== STDERR ===

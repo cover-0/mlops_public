@@ -121,6 +121,47 @@ def upsert_stats(conn: sqlite3.Connection) -> dict:
     }
 
 
+def print_summary(report: dict, events: list[dict]) -> None:
+    """사람이 읽는 요약을 stdout에 남긴다(보고서 JSON은 건드리지 않는다)."""
+    from collections import Counter
+
+    counts = Counter(e["event_id"] for e in events)
+    repeated = sorted(eid for eid, c in counts.items() if c > 1)
+
+    print(f"[1] 입력 — 처리 기록 {len(events)}건, 고유 event_id {len(counts)}개")
+    print(f"    출처: {report['input']['path']}")
+    print(f"    두 번 나타난 event_id {len(repeated)}개")
+    print("    " + " ".join(repeated))
+    if repeated:
+        pair = [e for e in events if e["event_id"] == repeated[0]]
+        t0 = datetime.fromisoformat(pair[0]["consumed_at"])
+        t1 = datetime.fromisoformat(pair[-1]["consumed_at"])
+        gap = (t1 - t0).total_seconds()
+        print(f"    예) {repeated[0]}  partition {pair[0]['partition']} "
+              f"offset {pair[0]['offset']} — 같은 위치가 두 번 처리됨")
+        print(f"        1차 {pair[0]['consumed_at']}")
+        print(f"        2차 {pair[-1]['consumed_at']}  (간격 {gap:.1f}초)")
+
+    a, b = report["A_naive_insert"], report["B_unique_or_ignore"]
+    c, d = report["C_upsert_do_update"], report["D_replay_full_stream"]
+    print("\n[2] 저장 전략별 결과")
+    print("    단계                        행 수  관찰 지표")
+    print(f"    A 제약 없는 INSERT          {a['rows']:5d}  중복 행 {a['duplicate_rows']}")
+    print(f"    B UNIQUE + OR IGNORE        {b['rows']:5d}  무시된 중복 {b['ignored_duplicates']}")
+    print(f"    C UPSERT DO UPDATE          {c['rows']:5d}  총 관찰 {c['total_observations']} / "
+          f"재관찰 이벤트 {c['reobserved_events']}")
+    print(f"    D C에 같은 스트림 재투입    {d['rows']:5d}  총 관찰 {d['total_observations']} / "
+          f"재관찰 이벤트 {d['reobserved_events']}")
+
+    print("\n[3] 업무 상태 지문 — event_id·partition·offset·first_seen_at")
+    print(f"    C  {c['business_state_fingerprint']}")
+    print(f"    D  {d['business_state_fingerprint']}")
+    same = c["business_state_fingerprint"] == d["business_state_fingerprint"]
+    print(f"    일치: {'예' if same else '아니오'} — "
+          f"총 관찰은 {c['total_observations']}에서 {d['total_observations']}으로 늘었지만 "
+          f"행 수는 {c['rows']}으로 그대로임\n")
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     if DB_PATH.exists():
@@ -148,6 +189,7 @@ def main() -> None:
 
     REPORT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n",
                            encoding="utf-8")
+    print_summary(report, events)
     print(json.dumps(report, ensure_ascii=False, indent=2))
     print(f"\n[저장] {REPORT_PATH}")
 

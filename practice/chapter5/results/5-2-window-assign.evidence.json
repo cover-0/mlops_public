@@ -1,0 +1,14 @@
+{
+  "file": "5-2-window-assign.py",
+  "chapter_relpath": "practice\\chapter5\\code\\5-2-window-assign.py",
+  "started_at": "2026-09-13T15:47:31.416314+09:00",
+  "duration_sec": 0.12,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "d1b45f99d456b7f4656061dd2d77603a35c3ce90e348977b4f2873fa4b30b330",
+  "output_sha256": "4225b0ee8cb34a7e0d71534b2b6ece696f9f56deae3e6667990b748a5a812a7c",
+  "output_log": "practice\\chapter5\\results\\5-2-window-assign.log"
+}

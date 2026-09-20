@@ -1,0 +1,14 @@
+{
+  "file": "7-1-feature-store-minimal.py",
+  "chapter_relpath": "practice\\chapter7\\code\\7-1-feature-store-minimal.py",
+  "started_at": "2026-09-13T15:42:20.768218+09:00",
+  "duration_sec": 0.89,
+  "exit_code": 1,
+  "timed_out": false,
+  "success": false,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "a4d6bf0ee1dd24540da8c604820277135a55ef3c1c6c68b609ceb429371c29d8",
+  "output_sha256": "e51abc46db20d11aebf70e715e69d4425466c0fdd9bd5be97ac2e48d1660775c",
+  "output_log": "practice\\chapter7\\results\\7-1-feature-store-minimal.log"
+}

@@ -1,0 +1,14 @@
+{
+  "file": "3-4-replay-offset.py",
+  "chapter_relpath": "practice\\chapter3\\code\\3-4-replay-offset.py",
+  "started_at": "2026-09-13T15:34:14.236775+09:00",
+  "duration_sec": 0.12,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "af6ff857053ffbf2ce787a9a8582fbf558dfcf592695986459644e3e4525a7a1",
+  "output_sha256": "4338839fe2a403e49223e441cec45a533601a19cf529cd348fcad52d9cb6d560",
+  "output_log": "practice\\chapter3\\results\\3-4-replay-offset.log"
+}

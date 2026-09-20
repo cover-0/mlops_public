@@ -1,0 +1,72 @@
+{
+  "source_file": "data/output/ch1_airquality_live_raw.json",
+  "header": {
+    "resultCode": "00",
+    "resultMsg": "NORMAL_CODE"
+  },
+  "total_count": 40,
+  "num_of_rows": 100,
+  "page_no": 1,
+  "items_received": 40,
+  "field_count": 23,
+  "fields": [
+    "coFlag",
+    "coGrade",
+    "coValue",
+    "dataTime",
+    "khaiGrade",
+    "khaiValue",
+    "no2Flag",
+    "no2Grade",
+    "no2Value",
+    "o3Flag",
+    "o3Grade",
+    "o3Value",
+    "pm10Flag",
+    "pm10Grade",
+    "pm10Value",
+    "pm25Flag",
+    "pm25Grade",
+    "pm25Value",
+    "sidoName",
+    "so2Flag",
+    "so2Grade",
+    "so2Value",
+    "stationName"
+  ],
+  "pollutants_with_triple": [
+    "so2",
+    "co",
+    "o3",
+    "no2",
+    "pm10",
+    "pm25"
+  ],
+  "non_triple_fields": [
+    "dataTime",
+    "khaiGrade",
+    "khaiValue",
+    "sidoName",
+    "stationName"
+  ],
+  "string_numeric_fields": [
+    "coGrade",
+    "coValue",
+    "khaiGrade",
+    "khaiValue",
+    "no2Grade",
+    "no2Value",
+    "o3Grade",
+    "o3Value",
+    "pm10Grade",
+    "pm10Value",
+    "pm25Grade",
+    "pm25Value",
+    "so2Grade",
+    "so2Value"
+  ],
+  "data_times": {
+    "2026-06-28 22:00": 40
+  },
+  "first_station": "정릉로"
+}

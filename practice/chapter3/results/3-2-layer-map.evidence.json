@@ -1,0 +1,14 @@
+{
+  "file": "3-2-layer-map.py",
+  "chapter_relpath": "practice\\chapter3\\code\\3-2-layer-map.py",
+  "started_at": "2026-09-13T15:29:52.620211+09:00",
+  "duration_sec": 0.12,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "a4e89903094282814215b23cccded5fd341c65f91c899b70dd6681f85ecd9943",
+  "output_sha256": "64457e118ad0f73ace50d6f312331d18a301601de2bcdcc945ef95bb2b74651b",
+  "output_log": "practice\\chapter3\\results\\3-2-layer-map.log"
+}

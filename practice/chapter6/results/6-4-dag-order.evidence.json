@@ -1,0 +1,14 @@
+{
+  "file": "6-4-dag-order.py",
+  "chapter_relpath": "practice\\chapter6\\code\\6-4-dag-order.py",
+  "started_at": "2026-09-13T15:47:26.154903+09:00",
+  "duration_sec": 0.2,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "fa3b7dc803f5f86005f84a7886bbdc8ec3e0dc1cf01ce30a49998c831cd0deb5",
+  "output_sha256": "67f40adb91437a43b638d6058ba08c92467fd8f4727dce2b77ad4522cf193c9b",
+  "output_log": "practice\\chapter6\\results\\6-4-dag-order.log"
+}

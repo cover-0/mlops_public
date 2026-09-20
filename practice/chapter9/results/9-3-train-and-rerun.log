@@ -1,0 +1,41 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 9-3-train-and-rerun.py
+
+=== STDOUT ===
+[1] 훈련 데이터 — 쌍 6개, 지문 96f6b6b3ce9dcdd1…
+    x(전일 건수) [5, 5, 5, 5, 6, 8]
+    y(당일 건수) [5, 6, 5, 5, 9, 6]
+
+[2] 후보 1 baseline_mean — 입력과 무관하게 y 평균을 내놓는다
+    예측값       6.0  (= y 합 36 ÷ 6)
+    잔차 절댓값  [1.0, 0.0, 1.0, 1.0, 3.0, 0.0]
+    train_mae    1.0000
+
+[3] 후보 2 linear — 전일 건수의 1차 함수
+    slope        0.4091  (= 9/22)
+    intercept    3.6818  (= 81/22)
+    잔차 절댓값  [0.7273, 0.2727, 0.7273, 0.7273, 2.8636, 0.9545]
+    train_mae    1.0455
+    → 복잡한 쪽이 기준선보다 나쁘다: 1.0455 > 1.0000
+
+[4] 9-1(scikit-learn)이 남긴 값과 대조
+    baseline_mean train_mae    손계산 1.0      기록 1.0      일치 예
+    linear train_mae           손계산 1.0455   기록 1.0455   일치 예
+    linear slope               손계산 0.4091   기록 0.4091   일치 예
+    linear intercept           손계산 3.6818   기록 3.6818   일치 예
+
+[5] 같은 입력으로 다시 훈련(재현성)
+    지문         96f6b6b3ce9dcdd1… → 96f6b6b3ce9dcdd1…
+    train_mae    1.0455 → 1.0455   동일 True
+    계수         (0.4091, 3.6818) → (0.4091, 3.6818)   동일 True
+
+[6] 입력이 한 건 바뀐 채로 같은 코드를 돌리면 — 마포구 마지막 날 건수 +1
+    지문         96f6b6b3ce9dcdd1… → 07060a30f8e15e7b…   같음 False
+    baseline_mean train_mae  1.0000 → 1.2222
+    linear train_mae         1.0455 → 1.2576
+    linear slope             0.4091 → 0.3182
+    지문이 다르면 데이터를 의심하고, 지문이 같은데 결과가 다르면 코드·환경·난수를 의심한다
+
+증거 파일: C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter9\data\output\ch9_training_runs.json
+CH9_3_PASS
+
+=== STDERR ===

@@ -1,0 +1,14 @@
+{
+  "file": "10-4-shadow-compare.py",
+  "chapter_relpath": "practice\\chapter10\\code\\10-4-shadow-compare.py",
+  "started_at": "2026-09-13T16:20:16.322391+09:00",
+  "duration_sec": 0.1,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "076e923ead5e87712433d0b170fd776c0fd7686be3acc0cf50fe454972d4d63f",
+  "output_sha256": "7cdea735d3b26fc2385d06e11c08be87e63a0d7b992719a046e75844acc97cfb",
+  "output_log": "practice\\chapter10\\results\\10-4-shadow-compare.log"
+}

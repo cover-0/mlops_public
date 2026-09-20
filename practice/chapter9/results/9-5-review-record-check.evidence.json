@@ -1,0 +1,14 @@
+{
+  "file": "9-5-review-record-check.py",
+  "chapter_relpath": "practice\\chapter9\\code\\9-5-review-record-check.py",
+  "started_at": "2026-09-13T16:09:17.431995+09:00",
+  "duration_sec": 0.14,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "9474940957350ba8698945578bf043129d5e01128da2b4e8ba84a624f680bf97",
+  "output_sha256": "db889f1ce7f59adad36ee979e14780db688706978b09c2d201fe80d0225dd851",
+  "output_log": "practice\\chapter9\\results\\9-5-review-record-check.log"
+}

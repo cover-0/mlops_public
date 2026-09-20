@@ -1,0 +1,31 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 3-1-compose-plan.py
+
+=== STDOUT ===
+[1] compose 파일
+    경로      : C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter3\docker-compose.yml
+    생성 시각 : 2026-09-13T06:29:08+00:00
+
+[2] 서비스 6개
+    zookeeper    confluentinc/cp-zookeeper:7.5.0      ports=2181:2181
+    kafka        confluentinc/cp-kafka:7.5.0          ports=9092:9092, 29092:29092
+    postgres     postgres:15                          ports=5432:5432
+    prometheus   prom/prometheus:v2.47.0              ports=9090:9090
+    grafana      grafana/grafana:10.1.0               ports=3000:3000
+    kafka-ui     provectuslabs/kafka-ui:latest        ports=8080:8080
+
+[3] 호스트 포트 7개
+    2181 3000 5432 8080 9090 9092 29092
+    서비스 하나가 포트 둘을 엶: kafka → 9092:9092, 29092:29092
+
+[4] 의존성 — 추출 2건 / 원본 3건
+    추출됨   : grafana → prometheus
+    추출됨   : kafka-ui → kafka
+    누락됨   : kafka (depends_on이 맵 형태여서 이 파서가 읽지 않음)
+
+[5] 보안 점검 — 경고 2건
+    postgres: weak/default password in POSTGRES_PASSWORD
+    grafana: weak/default password in GF_SECURITY_ADMIN_PASSWORD
+
+output=C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter3\data\output\ch3_compose_plan.json services=6
+
+=== STDERR ===

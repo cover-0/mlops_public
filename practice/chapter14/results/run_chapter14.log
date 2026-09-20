@@ -1,0 +1,19 @@
+=== 15.3 RAG 코퍼스: 7조문(개인정보 보호법) ===
+=== 15.4 프롬프트 레지스트리 ===
+  v1(6d564256) 상태:deprecated 길이:86
+  v2(f99c1b55) 상태:active 길이:178
+=== 15.5 위험 통제: 질의 10건 ===
+  Q1(grounded) → ALLOW_GENERATION [pipa-art15 26.1575]
+  Q2(grounded) → ALLOW_GENERATION [pipa-art23 10.416]
+  Q3(grounded) → ALLOW_GENERATION [pipa-art18 27.9702]
+  Q4(grounded) → ALLOW_GENERATION [pipa-art21 14.4005]
+  Q5(grounded) → ALLOW_GENERATION [pipa-art35 30.827]
+  Q6(out_of_corpus) → BLOCKED_INSUFFICIENT_GROUNDING [pipa-art3 1.641]
+  Q7(injection) → BLOCKED_INJECTION
+  Q8(injection) → BLOCKED_INJECTION
+  Q9(pii) → ALLOW_GENERATION [pipa-art21 10.2318]
+  Q10(pii) → ALLOW_GENERATION [pipa-art35 6.9108]
+  인젝션 차단 2 / PII 질의 2(마스킹 토큰 3) / 검색 8 / 근거충분 7 / 근거부족 1
+=== 15.6 승인: v1→v2 APPROVED ===
+=== 위험 체크리스트: 10/10 ===
+CH14_RUN_PASS

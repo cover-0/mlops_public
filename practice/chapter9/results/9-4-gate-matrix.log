@@ -1,0 +1,44 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 9-4-gate-matrix.py
+
+=== STDOUT ===
+[1] 후보 3개 — 같은 훈련 쌍 6개, 지문 96f6b6b3ce9dcdd1…
+    후보              train_mae  입력으로 요구하는 것  설명
+    baseline_mean       1.0000  없음            훈련 y 전체 평균 — 입력을 보지 않는다
+    linear              1.0455  전일 건수         전일 건수의 1차 함수
+    district_mean       0.6667  지역 코드         지역별 y 평균 — 지역마다 다른 값을 낸다
+
+[2] 현재 champion — v1, train_mae 1.0000
+    출처 practice/chapter9/data/output/ch9_promotion_record.json
+
+[3] 같은 후보를 세 규칙으로 판정 — champion은 baseline_mean(1.0000)
+    규칙                            linear(1.0455)          district_mean(0.6667)
+    A 절대만 (mae <= 1.05)           승격                      승격
+    B 상대만 (champion보다 개선)         반려(개선 없음)               승격
+    C 둘 다                         반려(개선 없음)               승격
+
+[4] 규칙 A(절대만)를 쓰면 무엇이 일어나는가
+    linear 1.0455 <= 1.05 이므로 통과 → champion이 1.0000에서 1.0455로 교체됨
+    운영 모델의 오차가 커졌는데도 규칙은 정상 작동했다고 기록된다
+
+[5] 임계값을 업무 기준으로 조이면 — mae <= 0.8
+    baseline_mean       1.0000  미달
+    linear              1.0455  미달
+    district_mean       0.6667  통과
+    등록 순서가 반대여서 linear가 먼저 champion이 되었다면, 상대 조건만으로는
+    baseline_mean(1.0000 < 1.0455) 판정이 '승격' — 둘 다 업무 기준 미달인데 교체가 일어난다
+
+[6] 별칭 이동과 롤백 — 규칙 C로 district_mean을 v3로 등록한 뒤
+    champion=v1  강남구 전일 건수 9.0 → 예측 6.00
+    champion=v3  강남구 전일 건수 9.0 → 예측 7.50
+    별칭 이력    v1 → v3 → (롤백) v1     소비자 코드는 한 줄도 바뀌지 않는다
+    반려된 v2를 지우지 않았기 때문에 되돌아갈 수 있는 버전이 v1·v2 둘이다
+
+[7] 지표가 좋아졌다고 끝나지 않는다 — district_mean의 조건
+    훈련에 있는 지역  11440, 11620, 11680
+    처음 보는 지역 11110을 넣으면  예측 None
+    지역별 표본은 2개뿐이라 지역이 늘면 이 방식은 그대로 쓸 수 없다
+
+증거 파일: C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter9\data\output\ch9_gate_matrix.json
+CH9_4_PASS
+
+=== STDERR ===

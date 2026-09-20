@@ -1,0 +1,59 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 9-5-review-record-check.py
+
+=== STDOUT ===
+[1] 점검 대상
+    파일         practice/chapter9/data/output/ch9_promotion_record.json
+    모델 이름    complaint_daily_forecaster
+    승격 규칙    train_mae <= 1.05 그리고 기존 champion 대비 개선
+    판정 이력    v1 mae 1.0 승격 / v2 mae 1.0455 반려
+
+[2] 감사 질문별 점검
+    통과  항목 model_name          어느 모델인가
+    통과  항목 champion_version    지금 운영 중인 것은 몇 번인가
+    통과  항목 gate_rule           어떤 규칙으로 통과시켰는가
+    통과  항목 decisions           각 버전을 어떻게 판정했는가
+    통과  항목 reproducibility_check 그 수치가 다시 나오는가
+    통과  항목 data_fingerprint_sha256 어느 데이터로 훈련했는가
+    통과  항목 reviewer            누가 확인했는가
+    통과  항목 notes               어떤 제한이 붙는가
+    통과  지문 재계산 대조              기록된 지문이 원천에서 다시 나오는가
+          기록 96f6b6b3ce9dcdd1… / 재계산 96f6b6b3ce9dcdd1…
+    통과  champion 일치            champion 버전이 승격 판정과 맞는가
+          champion v1 / 승격 판정 [1]
+    통과  반려 이력 보존               반려된 버전이 기록에 남아 있는가
+          반려 [2] — 롤백 대상이자 재시도 방지 근거
+    통과  재현성 통과                 같은 설정으로 같은 결과가 나왔는가
+          mae_equal=True coef_equal=True
+    미흡  검수자 실명                 확인한 사람이 특정되는가
+          reviewer='검수 담당(가상 — 시뮬레이션 표기)' — 실운영이면 이 칸이 비면 안 된다
+    → 12/13 통과
+
+[3] 기록이 부실할 때 — reviewer를 빼고 지문을 다른 값으로 바꾼 사본
+    통과  항목 model_name          어느 모델인가
+    통과  항목 champion_version    지금 운영 중인 것은 몇 번인가
+    통과  항목 gate_rule           어떤 규칙으로 통과시켰는가
+    통과  항목 decisions           각 버전을 어떻게 판정했는가
+    통과  항목 reproducibility_check 그 수치가 다시 나오는가
+    통과  항목 data_fingerprint_sha256 어느 데이터로 훈련했는가
+    미흡  항목 reviewer            누가 확인했는가
+    통과  항목 notes               어떤 제한이 붙는가
+    미흡  지문 재계산 대조              기록된 지문이 원천에서 다시 나오는가
+          기록 0000000000000000… / 재계산 96f6b6b3ce9dcdd1…
+    통과  champion 일치            champion 버전이 승격 판정과 맞는가
+          champion v1 / 승격 판정 [1]
+    통과  반려 이력 보존               반려된 버전이 기록에 남아 있는가
+          반려 [2] — 롤백 대상이자 재시도 방지 근거
+    통과  재현성 통과                 같은 설정으로 같은 결과가 나왔는가
+          mae_equal=True coef_equal=True
+    미흡  검수자 실명                 확인한 사람이 특정되는가
+          reviewer='' — 실운영이면 이 칸이 비면 안 된다
+    → 10/13 통과
+
+[4] 이 점검이 성립하는 조건
+    지문 대조는 원천 자료가 남아 있어야 가능하다 — 원천을 지우면 기록의 진위를 확인할 수 없다
+    재현성 항목은 훈련 시점에 기록되어야 한다 — 사고가 난 뒤에는 만들 수 없다
+
+증거 파일: C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter9\data\output\ch9_record_audit.json
+CH9_5_PASS
+
+=== STDERR ===

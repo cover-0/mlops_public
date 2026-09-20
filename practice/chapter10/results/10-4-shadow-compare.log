@@ -1,0 +1,38 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 10-4-shadow-compare.py
+
+=== STDOUT ===
+[1] 두 모델을 같은 훈련 쌍 6개로 적합
+    champion   v1 평균 예측기      상수 6.0
+    challenger v2 선형회귀        절편 3.6818  기울기 0.4091
+    9장이 기록한 계수 {'intercept': 3.6818, 'slope': 0.4091} 와 일치: 예
+
+[2] shadow 호출 — 훈련 쌍의 전일 건수를 그대로 요청 6건으로 보낸다
+    자치구        전일     이용자가 받는 값       로그에만 남는 값       차이
+    11440       5           6.0          5.7273  -0.2727
+    11440       5           6.0          5.7273  -0.2727
+    11620       5           6.0          5.7273  -0.2727
+    11620       5           6.0          5.7273  -0.2727
+    11680       6           6.0          6.1364   0.1364
+    11680       8           6.0          6.9545   0.9545
+    이용자에게 나간 응답 6건 전부 champion 값 — challenger는 한 건도 닿지 않았다
+
+[3] 과거 실행이 남긴 shadow 관찰과 대조
+    이번 계산  전일 9 → champion 6.0 / challenger 7.3636
+    과거 실행  전일 9 → champion 6.0 / challenger 7.3636
+    (출처 ch10_deploy_report.json — 일치: 예)
+    두 값의 차이 1.3636 가 이 절의 관찰 자료다
+
+[4] 로그만으로 후보를 재평가 — 요청 6건의 절대오차 평균
+    champion   1.0
+    challenger 1.0455
+    9장 기록  champion 1.0 / challenger 1.0455
+    후보가 더 낫지 않음 — 승격 보류 판정이 실요청 위에서도 유지된다
+
+[5] challenger가 요청 처리 중 죽으면
+    shadow 실패 1건 / 이용자에게 나간 응답 6건
+    실패 반경 0 — 후보가 무엇을 하든 이용자 응답은 champion 경로로만 만들어진다
+
+증거 파일: C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter10\data\output\ch10_shadow_compare.json
+CH10_SHADOW_COMPARE_OK
+
+=== STDERR ===

@@ -1,0 +1,14 @@
+{
+  "file": "7-4-point-in-time-join.py",
+  "chapter_relpath": "practice\\chapter7\\code\\7-4-point-in-time-join.py",
+  "started_at": "2026-09-13T15:47:29.732571+09:00",
+  "duration_sec": 0.12,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "ed826022a3f2bc9d5b3585fa88c116fc032a62b8e9e7f8caf5c74afe191c67f9",
+  "output_sha256": "3fd65e745524a8c49400240b05d4ba99ae61d3d84ee974676c0a2bc334448b77",
+  "output_log": "practice\\chapter7\\results\\7-4-point-in-time-join.log"
+}

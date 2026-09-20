@@ -1,0 +1,14 @@
+{
+  "file": "6-1-daily-report-dag.py",
+  "chapter_relpath": "practice\\chapter6\\code\\6-1-daily-report-dag.py",
+  "started_at": "2026-09-13T15:42:41.891345+09:00",
+  "duration_sec": 0.17,
+  "exit_code": 1,
+  "timed_out": false,
+  "success": false,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "b775d0042266813d664addfe4ddd28697c23ef8c4b79ed0ccfad48901e4848e5",
+  "output_sha256": "e7c05aa9c6f1bdb752e895323af9e980bf15650000b79d83219161161ce3be13",
+  "output_log": "practice\\chapter6\\results\\6-1-daily-report-dag.log"
+}

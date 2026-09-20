@@ -1,0 +1,14 @@
+{
+  "file": "1-3-silent-failure.py",
+  "chapter_relpath": "practice\\chapter1\\code\\1-3-silent-failure.py",
+  "started_at": "2026-09-13T16:48:32.776320+09:00",
+  "duration_sec": 0.15,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "aad178b53c92808ddf10e5a8f4555ad8c85c05fca3da49523ed2d0e78eacfb89",
+  "output_sha256": "6678561e0abf3b5f5eca952de1ead5485ddacd51b410835069495f648f5e75ca",
+  "output_log": "practice\\chapter1\\results\\1-3-silent-failure.log"
+}

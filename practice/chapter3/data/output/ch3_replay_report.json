@@ -1,0 +1,68 @@
+{
+  "input_files": [
+    "airquality_seoul_2200.json",
+    "airquality_seoul_current.json"
+  ],
+  "log_size": 80,
+  "retention_start_offset": 40,
+  "first_run": {
+    "result": {
+      "from_offset": 40,
+      "stat": "mean",
+      "consumed": 40,
+      "unavailable": 0,
+      "windows": {
+        "2026-06-28 23:00": {
+          "count": 40,
+          "pm10_stat": 20.77,
+          "pm10_min": 14,
+          "pm10_max": 27
+        }
+      }
+    },
+    "hash": "f6a5c48ba48fa6efcc09bf2610b17928cdf187ecf7f689d6ae07bdfef3d5934c"
+  },
+  "replay": {
+    "result": {
+      "from_offset": 40,
+      "stat": "mean",
+      "consumed": 40,
+      "unavailable": 0,
+      "windows": {
+        "2026-06-28 23:00": {
+          "count": 40,
+          "pm10_stat": 20.77,
+          "pm10_min": 14,
+          "pm10_max": 27
+        }
+      }
+    },
+    "hash": "f6a5c48ba48fa6efcc09bf2610b17928cdf187ecf7f689d6ae07bdfef3d5934c",
+    "hash_matches_first": true
+  },
+  "replay_after_rule_change": {
+    "result": {
+      "from_offset": 40,
+      "stat": "median",
+      "consumed": 40,
+      "unavailable": 0,
+      "windows": {
+        "2026-06-28 23:00": {
+          "count": 40,
+          "pm10_stat": 20.0,
+          "pm10_min": 14,
+          "pm10_max": 27
+        }
+      }
+    },
+    "hash": "5cfafcb513d8cdf92061cd79f466f41c9c2f9a5cee7804cf50cc9fe7d7523e65",
+    "stat_before": "mean",
+    "stat_after": "median"
+  },
+  "beyond_retention": {
+    "requested_from_offset": 0,
+    "unavailable": 40,
+    "consumed": 40
+  },
+  "generated_at": "2026-09-13T15:34:14+09:00"
+}

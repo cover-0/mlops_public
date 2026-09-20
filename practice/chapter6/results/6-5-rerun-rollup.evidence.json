@@ -1,0 +1,14 @@
+{
+  "file": "6-5-rerun-rollup.py",
+  "chapter_relpath": "practice\\chapter6\\code\\6-5-rerun-rollup.py",
+  "started_at": "2026-09-13T15:48:42.931046+09:00",
+  "duration_sec": 0.16,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "a13190ff09cf2249f5951d281a3f2656715e97089674c0f8cbcc44517b41e6aa",
+  "output_sha256": "9f46a52c048de0643d43f82aaa5ab325e6910192dda9312c0b6cec758b988412",
+  "output_log": "practice\\chapter6\\results\\6-5-rerun-rollup.log"
+}

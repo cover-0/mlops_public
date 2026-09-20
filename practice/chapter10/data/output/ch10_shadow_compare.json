@@ -1,0 +1,70 @@
+{
+  "blast_radius": {
+    "responses_affected": 0,
+    "responses_served": 6,
+    "shadow_failures": 1
+  },
+  "latest_request": {
+    "challenger_forecast": 7.3636,
+    "champion_forecast": 6.0,
+    "gap": 1.3636,
+    "lawd_cd": "11680",
+    "matches_past_run": true,
+    "x_prev_count": 9
+  },
+  "models": {
+    "challenger_intercept": 3.6818,
+    "challenger_slope": 0.4091,
+    "champion_constant": 6.0,
+    "coef_matches_ch9": true
+  },
+  "reevaluation": {
+    "challenger_better": false,
+    "challenger_mae": 1.0455,
+    "champion_mae": 1.0
+  },
+  "shadow_log": [
+    {
+      "challenger_forecast": 5.7273,
+      "champion_forecast": 6.0,
+      "lawd_cd": "11440",
+      "x_prev_count": 5,
+      "y_true": 5
+    },
+    {
+      "challenger_forecast": 5.7273,
+      "champion_forecast": 6.0,
+      "lawd_cd": "11440",
+      "x_prev_count": 5,
+      "y_true": 6
+    },
+    {
+      "challenger_forecast": 5.7273,
+      "champion_forecast": 6.0,
+      "lawd_cd": "11620",
+      "x_prev_count": 5,
+      "y_true": 5
+    },
+    {
+      "challenger_forecast": 5.7273,
+      "champion_forecast": 6.0,
+      "lawd_cd": "11620",
+      "x_prev_count": 5,
+      "y_true": 5
+    },
+    {
+      "challenger_forecast": 6.1364,
+      "champion_forecast": 6.0,
+      "lawd_cd": "11680",
+      "x_prev_count": 6,
+      "y_true": 9
+    },
+    {
+      "challenger_forecast": 6.9545,
+      "champion_forecast": 6.0,
+      "lawd_cd": "11680",
+      "x_prev_count": 8,
+      "y_true": 6
+    }
+  ]
+}

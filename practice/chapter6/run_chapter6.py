@@ -64,10 +64,16 @@ def task_states(dagrun) -> list[dict]:
 def main() -> int:
     import pendulum
 
-    # 재현성: 이전 실행 산출물(메타데이터 DB 포함)을 지우고 시작한다.
-    if OUTPUT_DIR.exists():
-        shutil.rmtree(OUTPUT_DIR)
-    OUTPUT_DIR.mkdir(parents=True)
+    # 재현성: 이전 실행 산출물(메타데이터 DB 포함)을 지우고 시작하되,
+    # data/output 전체가 아니라 이 실행이 다시 만드는 것만 지운다.
+    # 같은 폴더에 6-2~6-5의 산출물과 학생이 제출할 파일이 함께 있기 때문이다.
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    for name in ("airflow_home", "daily", "weekly"):
+        target = OUTPUT_DIR / name
+        if target.is_dir():
+            shutil.rmtree(target)
+        elif target.exists():
+            target.unlink()
 
     module = load_module()
     print("== 준비: 메타데이터 DB 마이그레이션 + DAG 직렬화 ==")

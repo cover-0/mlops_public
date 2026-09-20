@@ -1,0 +1,65 @@
+{
+  "source_plan": "C:\\Users\\user\\Documents\\lee\\class\\2026-2\\mlops_public\\practice\\chapter3\\data\\output\\ch3_compose_plan.json",
+  "generated_from": "2026-09-13T06:29:08+00:00",
+  "rule": {
+    "zookeeper": "수집",
+    "kafka": "수집",
+    "postgres": "저장",
+    "prometheus": "모니터링",
+    "grafana": "모니터링",
+    "kafka-ui": "모니터링"
+  },
+  "layers": {
+    "수집": {
+      "services": [
+        "zookeeper",
+        "kafka"
+      ],
+      "service_count": 2,
+      "port_count": 3,
+      "fails_without": "유실·과부하"
+    },
+    "저장": {
+      "services": [
+        "postgres"
+      ],
+      "service_count": 1,
+      "port_count": 1,
+      "fails_without": "재처리·감사 불가"
+    },
+    "처리": {
+      "services": [],
+      "service_count": 0,
+      "port_count": 0,
+      "fails_without": "원천이 지표가 되지 못함"
+    },
+    "서빙": {
+      "services": [],
+      "service_count": 0,
+      "port_count": 0,
+      "fails_without": "데이터가 서비스되지 않음"
+    },
+    "모니터링": {
+      "services": [
+        "prometheus",
+        "grafana",
+        "kafka-ui"
+      ],
+      "service_count": 3,
+      "port_count": 3,
+      "fails_without": "침묵 실패 미발견"
+    }
+  },
+  "empty_layers": [
+    "처리",
+    "서빙"
+  ],
+  "filled_at": {
+    "처리": "5주차(스트리밍)·6주차(배치)",
+    "서빙": "10주차(모델 배포)"
+  },
+  "alt_rule_kafka_ui_as_ingest": {
+    "수집": 3,
+    "모니터링": 2
+  }
+}

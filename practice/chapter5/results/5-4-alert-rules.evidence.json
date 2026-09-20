@@ -1,0 +1,14 @@
+{
+  "file": "5-4-alert-rules.py",
+  "chapter_relpath": "practice\\chapter5\\code\\5-4-alert-rules.py",
+  "started_at": "2026-09-13T15:49:39.840992+09:00",
+  "duration_sec": 0.13,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "5d5d3fc11d69d577cae81779c54dc162adde4319aab05c6ee47ee5c2845b7574",
+  "output_sha256": "5479ad924df5bde1fc02d8043ed6c10c276e8f697d4ce6106269a27dbced131a",
+  "output_log": "practice\\chapter5\\results\\5-4-alert-rules.log"
+}

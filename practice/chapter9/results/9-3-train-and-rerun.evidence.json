@@ -1,0 +1,14 @@
+{
+  "file": "9-3-train-and-rerun.py",
+  "chapter_relpath": "practice\\chapter9\\code\\9-3-train-and-rerun.py",
+  "started_at": "2026-09-13T16:06:51.539617+09:00",
+  "duration_sec": 0.13,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "586b283c85b8d55aa30f756f64b94f2ba408359212490f3516535e36d5b434d2",
+  "output_sha256": "ace95e3b063be73e9d786f4483970ade06c9161dc1cfff5fcfff9190ba47fb36",
+  "output_log": "practice\\chapter9\\results\\9-3-train-and-rerun.log"
+}

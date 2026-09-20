@@ -1,0 +1,14 @@
+{
+  "file": "10-5-release-gate.py",
+  "chapter_relpath": "practice\\chapter10\\code\\10-5-release-gate.py",
+  "started_at": "2026-09-13T16:20:16.428965+09:00",
+  "duration_sec": 0.11,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "3163b9efba62524754aa7bdcc3a2e96eafa31b6c1fe6c87d6f0eefee5d25d3f7",
+  "output_sha256": "ae1ffd54f0847e55ced4a789e26172f0d57a907f343913b6e2ac1d3e10479b53",
+  "output_log": "practice\\chapter10\\results\\10-5-release-gate.log"
+}

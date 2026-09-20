@@ -1,0 +1,14 @@
+{
+  "file": "10-3-serving-contract.py",
+  "chapter_relpath": "practice\\chapter10\\code\\10-3-serving-contract.py",
+  "started_at": "2026-09-13T16:20:16.217461+09:00",
+  "duration_sec": 0.1,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "728e15e4de494c2ee57feedd2f81b2c785615be188f48737048798995a056ab5",
+  "output_sha256": "04e1a6fcfa6a05212c2ac592a7a455908a917a58335c99a8ebac833c262f846d",
+  "output_log": "practice\\chapter10\\results\\10-3-serving-contract.log"
+}

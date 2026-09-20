@@ -1,0 +1,14 @@
+{
+  "file": "5-1-streaming-window-aggregation.py",
+  "chapter_relpath": "practice\\chapter5\\code\\5-1-streaming-window-aggregation.py",
+  "started_at": "2026-09-13T15:43:55.801065+09:00",
+  "duration_sec": 8.77,
+  "exit_code": 1,
+  "timed_out": false,
+  "success": false,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "e9cd08d8026ae9dc98500aaff60c01119682896b8b7967b5e17e11ef39c8e8b6",
+  "output_sha256": "372dc5da7b1e6f5daf29d0053a904b8eef4b4b2557ff9911fdafa99be09bac21",
+  "output_log": "practice\\chapter5\\results\\5-1-streaming-window-aggregation.log"
+}

@@ -6,11 +6,11 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-08-31T10:44:43.374444</dc:date>
+    <dc:date>2026-09-13T17:50:20.209462</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
-      <dc:title>Matplotlib v3.10.6, https://matplotlib.org/</dc:title>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
      </cc:Agent>
     </dc:creator>
    </cc:Work>
@@ -93,7 +93,7 @@ z
     <path d="M 248.4 254.16 
 L 248.4 385.2 
 L 853.2 385.2 
-" clip-path="url(#p5914c47694)" style="fill: none; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #e74c3c; stroke-width: 1.8"/>
+" clip-path="url(#p69b191d426)" style="fill: none; stroke-dasharray: 6.66,2.88; stroke-dashoffset: 0; stroke: #e74c3c; stroke-width: 1.8"/>
    </g>
    <g id="patch_8">
     <path d="M 853.2 385.2 
@@ -116,7 +116,7 @@ Q 37.8 160.56 37.8 167.112
 L 37.8 247.608 
 Q 37.8 254.16 52.92 254.16 
 z
-" clip-path="url(#p5914c47694)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p69b191d426)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_10">
     <path d="M 204.12 254.16 
@@ -129,7 +129,7 @@ Q 189 160.56 189 167.112
 L 189 247.608 
 Q 189 254.16 204.12 254.16 
 z
-" clip-path="url(#p5914c47694)" style="fill: #fdecea; stroke: #e74c3c; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p69b191d426)" style="fill: #fdecea; stroke: #e74c3c; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_11">
     <path d="M 355.32 254.16 
@@ -142,7 +142,7 @@ Q 340.2 160.56 340.2 167.112
 L 340.2 247.608 
 Q 340.2 254.16 355.32 254.16 
 z
-" clip-path="url(#p5914c47694)" style="fill: #fdecea; stroke: #e74c3c; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p69b191d426)" style="fill: #fdecea; stroke: #e74c3c; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_12">
     <path d="M 506.52 254.16 
@@ -155,7 +155,7 @@ Q 491.4 160.56 491.4 167.112
 L 491.4 247.608 
 Q 491.4 254.16 506.52 254.16 
 z
-" clip-path="url(#p5914c47694)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p69b191d426)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_13">
     <path d="M 657.72 254.16 
@@ -168,7 +168,7 @@ Q 642.6 160.56 642.6 167.112
 L 642.6 247.608 
 Q 642.6 254.16 657.72 254.16 
 z
-" clip-path="url(#p5914c47694)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p69b191d426)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_14">
     <path d="M 808.92 254.16 
@@ -181,7 +181,7 @@ Q 793.8 160.56 793.8 167.112
 L 793.8 247.608 
 Q 793.8 254.16 808.92 254.16 
 z
-" clip-path="url(#p5914c47694)" style="fill: #fdecea; stroke: #e74c3c; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p69b191d426)" style="fill: #fdecea; stroke: #e74c3c; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_15">
     <path d="M 960.12 254.16 
@@ -194,7 +194,7 @@ Q 945 160.56 945 167.112
 L 945 247.608 
 Q 945 254.16 960.12 254.16 
 z
-" clip-path="url(#p5914c47694)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p69b191d426)" style="fill: #f4f6f8; stroke: #8899a6; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <!-- D-14 -->
@@ -2769,7 +2769,7 @@ z
     </g>
    </g>
    <g id="text_10">
-    <!-- 발원지(D-7)와 발현지(D+10) 사이 11일 — 감지 지점을 이 구간 어디에나 설계할 수 있다 -->
+    <!-- 발원지(D-7)와 발현지(D+10) 사이 17일 — 감지 지점을 이 구간 어디에나 설계할 수 있다 -->
     <g style="fill: #e74c3c" transform="translate(356.931875 411.631016) scale(0.11 -0.11)">
      <defs>
       <path id="NotoSansKR-Thin-c640" d="M 1978 2381 
@@ -3598,7 +3598,7 @@ z
      <use xlink:href="#NotoSansKR-Thin-c774" transform="translate(1272.599762 0)"/>
      <use xlink:href="#NotoSansKR-Thin-20" transform="translate(1364.599747 0)"/>
      <use xlink:href="#NotoSansKR-Thin-31" transform="translate(1386.599731 0)"/>
-     <use xlink:href="#NotoSansKR-Thin-31" transform="translate(1438.699722 0)"/>
+     <use xlink:href="#NotoSansKR-Thin-37" transform="translate(1438.699722 0)"/>
      <use xlink:href="#NotoSansKR-Thin-c77c" transform="translate(1490.799713 0)"/>
      <use xlink:href="#NotoSansKR-Thin-20" transform="translate(1582.799698 0)"/>
      <use xlink:href="#NotoSansKR-Thin-2014" transform="translate(1604.799683 0)"/>
@@ -3633,7 +3633,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p5914c47694">
+  <clipPath id="p69b191d426">
    <rect x="10.8" y="10.8" width="1080" height="468"/>
   </clipPath>
  </defs>

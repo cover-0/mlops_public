@@ -1,0 +1,76 @@
+{
+  "source_file": "data/output/ch1_airquality_live_raw.json",
+  "required_fields": [
+    "stationName",
+    "sidoName",
+    "dataTime",
+    "pm10Value",
+    "pm25Value"
+  ],
+  "missing_rate_limit": 0.05,
+  "truncate_rows": 20,
+  "checks_full_response": [
+    {
+      "id": "C1",
+      "name": "업무 코드",
+      "expected": "resultCode == '00'",
+      "actual": "resultCode=00",
+      "passed": true
+    },
+    {
+      "id": "C2",
+      "name": "건수",
+      "expected": "items == totalCount(40)",
+      "actual": "items=40",
+      "passed": true
+    },
+    {
+      "id": "C3",
+      "name": "스키마",
+      "expected": "필수 5개 필드 전건 존재",
+      "actual": "모두 존재",
+      "passed": true
+    },
+    {
+      "id": "C4",
+      "name": "결측률",
+      "expected": "pm10Value 결측률 <= 5.0%",
+      "actual": "0/40 = 0.0%",
+      "passed": true
+    }
+  ],
+  "checks_truncated_response": [
+    {
+      "id": "C1",
+      "name": "업무 코드",
+      "expected": "resultCode == '00'",
+      "actual": "resultCode=00",
+      "passed": true
+    },
+    {
+      "id": "C2",
+      "name": "건수",
+      "expected": "items == totalCount(40)",
+      "actual": "items=20",
+      "passed": false
+    },
+    {
+      "id": "C3",
+      "name": "스키마",
+      "expected": "필수 5개 필드 전건 존재",
+      "actual": "모두 존재",
+      "passed": true
+    },
+    {
+      "id": "C4",
+      "name": "결측률",
+      "expected": "pm10Value 결측률 <= 5.0%",
+      "actual": "0/20 = 0.0%",
+      "passed": true
+    }
+  ],
+  "pm10_mean_full": 20.0,
+  "pm10_mean_truncated": 20.3,
+  "items_sha256_full": "8dc4d5794ce4a7d8e554509332110071c654f8616edc6634cb961ae93be71b6e",
+  "items_sha256_truncated": "813f593df2a675057739bce14c5bc7e0253d05699f0799e1f32fac5b02395c18"
+}

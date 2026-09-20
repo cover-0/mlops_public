@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "body": {
+        "lawd_cd": "11680",
+        "x_prev_count": 9
+      },
+      "forecast": 6.0,
+      "label": "정상 — 강남구, 전일 9건",
+      "model_name": "complaint_daily_forecaster",
+      "model_source": "registry-alias",
+      "model_version": "1",
+      "reason": [],
+      "status": 200
+    },
+    {
+      "body": {
+        "lawd_cd": "11440",
+        "x_prev_count": 0
+      },
+      "forecast": 6.0,
+      "label": "정상 — 마포구, 전일 0건",
+      "model_name": "complaint_daily_forecaster",
+      "model_source": "registry-alias",
+      "model_version": "1",
+      "reason": [],
+      "status": 200
+    },
+    {
+      "body": {
+        "lawd_cd": "11680",
+        "x_prev_count": -1
+      },
+      "forecast": null,
+      "label": "음수 건수",
+      "reason": [
+        "x_prev_count는 0 이상 정수여야 함"
+      ],
+      "status": 422
+    },
+    {
+      "body": {
+        "lawd_cd": "강남구",
+        "x_prev_count": 9
+      },
+      "forecast": null,
+      "label": "코드 자리에 한글",
+      "reason": [
+        "lawd_cd는 5자리 숫자 문자열이어야 함"
+      ],
+      "status": 422
+    },
+    {
+      "body": {
+        "x_prev_count": 9
+      },
+      "forecast": null,
+      "label": "필드 누락",
+      "reason": [
+        "lawd_cd 필드 누락"
+      ],
+      "status": 422
+    },
+    {
+      "body": {
+        "lawd_cd": "1168",
+        "x_prev_count": 9
+      },
+      "forecast": null,
+      "label": "코드 4자리",
+      "reason": [
+        "lawd_cd는 5자리 숫자 문자열이어야 함"
+      ],
+      "status": 422
+    },
+    {
+      "body": {
+        "lawd_cd": "99999",
+        "x_prev_count": 9
+      },
+      "forecast": 6.0,
+      "label": "형식은 맞지만 없는 자치구",
+      "model_name": "complaint_daily_forecaster",
+      "model_source": "registry-alias",
+      "model_version": "1",
+      "reason": [],
+      "status": 200
+    }
+  ],
+  "health": {
+    "model_name": "complaint_daily_forecaster",
+    "model_source": "registry-alias",
+    "model_version": "1",
+    "shadow_enabled": true,
+    "status": "ok"
+  },
+  "identity_fields": [
+    "model_name",
+    "model_source",
+    "model_version"
+  ],
+  "summary": {
+    "accepted": 3,
+    "accepted_but_unknown_district": 1,
+    "rejected_422": 4,
+    "total": 7
+  }
+}

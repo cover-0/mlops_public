@@ -1,0 +1,14 @@
+{
+  "file": "11-1-drift-monitoring.py",
+  "chapter_relpath": "practice\\chapter11\\code\\11-1-drift-monitoring.py",
+  "started_at": "2026-09-13T16:02:28.973922+09:00",
+  "duration_sec": 2.06,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "15b1305e4fb3daf482a625ac33458445b81ea484b660820acb625b3d3bf7082f",
+  "output_sha256": "892125ca589737ce226eaa1cb53c434050cc102f8aa49241d60dff6113e40830",
+  "output_log": "practice\\chapter11\\results\\11-1-drift-monitoring.log"
+}

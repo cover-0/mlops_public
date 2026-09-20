@@ -1,0 +1,14 @@
+{
+  "file": "9-2-training-pairs.py",
+  "chapter_relpath": "practice\\chapter9\\code\\9-2-training-pairs.py",
+  "started_at": "2026-09-13T16:05:31.613043+09:00",
+  "duration_sec": 0.13,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "9f0d6250adb636fd3637631678649bd1b7f018df9a8e209a54db224af0b34dbe",
+  "output_sha256": "4a4112bb7adc4c78c8f32a6d02f4c89d72908b83a65512906c5dbb5250729971",
+  "output_log": "practice\\chapter9\\results\\9-2-training-pairs.log"
+}

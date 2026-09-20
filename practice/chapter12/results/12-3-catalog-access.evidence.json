@@ -1,0 +1,14 @@
+{
+  "file": "12-3-catalog-access.py",
+  "chapter_relpath": "practice\\chapter12\\code\\12-3-catalog-access.py",
+  "started_at": "2026-09-13T16:09:40.521803+09:00",
+  "duration_sec": 0.15,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "d8a0ecaba760b55da378db86b80d23bbae6bea7955155140e180d4d82a330c50",
+  "output_sha256": "7f96ce6a86bc5a4ce221b756f61b6d9ad1b577381c3d86c9f8c34c4b71fe2e9d",
+  "output_log": "practice\\chapter12\\results\\12-3-catalog-access.log"
+}

@@ -1,0 +1,8 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe verify_numbers.py
+
+=== STDOUT ===
+주의: C:\Users\user\Documents\lee\class\2026-2\mlops_public\lecture\docs\chapter15.md 없음 — 증거 자기정합성만 검사
+대조 18건, 실패 0건
+ALL_PASS
+
+=== STDERR ===

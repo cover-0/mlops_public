@@ -1,0 +1,64 @@
+{
+  "byte_identity": {
+    "converted_bytes": 5588,
+    "converted_sha256": "ec7ec65397a3194af06d041841d1e3157d5ef7a610bb3dcf24cacf55d8f110b4",
+    "file": "code/10-1-model-api/app.py",
+    "original_bytes": 5708,
+    "original_sha256": "1718607ffbd39aadb8597a1ad8d1168f54e3f1f3a070a475e6b6f57729416dd3",
+    "same_bytes": false,
+    "same_lines": true
+  },
+  "checklist_committed": {
+    "1_자동_테스트_통과": true,
+    "2_서빙_신원_응답(/health가 모델 이름·버전을 답함)": true,
+    "3_알려진_입력_알려진_출력_스모크": true,
+    "4_잘못된_입력_거절(422)": true,
+    "5_컨테이너_호스트_동일_예측(환경_동등성)": true,
+    "6_모델_실물_이미지_고정_및_출처_동봉": true,
+    "7_레지스트리_버전_보존(롤백_전제)": true,
+    "8_검증_파이프라인_정의(CI_워크플로)": true
+  },
+  "checklist_disagreement": [
+    "6_모델_실물_이미지_고정_및_출처_동봉",
+    "8_검증_파이프라인_정의(CI_워크플로)"
+  ],
+  "checklist_recomputed": {
+    "1_자동_테스트_통과": true,
+    "2_서빙_신원_응답(/health가 모델 이름·버전을 답함)": true,
+    "3_알려진_입력_알려진_출력_스모크": true,
+    "4_잘못된_입력_거절(422)": true,
+    "5_컨테이너_호스트_동일_예측(환경_동등성)": true,
+    "6_모델_실물_이미지_고정_및_출처_동봉": false,
+    "7_레지스트리_버전_보존(롤백_전제)": true,
+    "8_검증_파이프라인_정의(CI_워크플로)": false
+  },
+  "checklist_source": {
+    "1_자동_테스트_통과": "tests.passed",
+    "2_서빙_신원_응답(/health가 모델 이름·버전을 답함)": "host.health.model_version",
+    "3_알려진_입력_알려진_출력_스모크": "host.forecast",
+    "4_잘못된_입력_거절(422)": "host.invalid_input_status",
+    "5_컨테이너_호스트_동일_예측(환경_동등성)": "container.forecast == host.forecast",
+    "6_모델_실물_이미지_고정_및_출처_동봉": "파일 존재 검사",
+    "7_레지스트리_버전_보존(롤백_전제)": "bootstrap.challenger_version",
+    "8_검증_파이프라인_정의(CI_워크플로)": "파일 존재 검사"
+  },
+  "flip_experiment": {
+    "flipped_item": "5_컨테이너_호스트_동일_예측(환경_동등성)",
+    "passed_after": 5,
+    "passed_before": 6
+  },
+  "layout_check": {
+    "이미지 배치": {
+      "error": "IndexError: list index out of range",
+      "parent_depth": 1,
+      "parents_1": null,
+      "path": "/app/app.py"
+    },
+    "저장소 배치": {
+      "error": null,
+      "parent_depth": 5,
+      "parents_1": "/repo/practice/chapter10",
+      "path": "/repo/practice/chapter10/code/10-1-model-api/app.py"
+    }
+  }
+}

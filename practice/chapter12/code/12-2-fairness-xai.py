@@ -58,7 +58,10 @@ def load_pairs(input_dir: Path) -> tuple[pd.DataFrame, str]:
 
 def data_fingerprint(df: pd.DataFrame) -> str:
     """9장과 같은 방법(정렬된 훈련 쌍 CSV의 sha256)으로 지문을 재계산한다."""
-    canon = df[["lawd_cd", "x_prev_count", "y_count"]].to_csv(index=False).encode("utf-8")
+    # lineterminator를 고정한다. pandas 기본값은 실행 OS의 줄바꿈을 따르므로
+    # 고정하지 않으면 같은 데이터가 Windows에서 다른 지문을 낸다(9장 교차 확인 실패).
+    canon = df[["lawd_cd", "x_prev_count", "y_count"]].to_csv(
+        index=False, lineterminator="\n").encode("utf-8")
     return hashlib.sha256(canon).hexdigest()
 
 

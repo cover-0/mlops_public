@@ -1,0 +1,14 @@
+{
+  "file": "6-2-cutoff-scope.py",
+  "chapter_relpath": "practice\\chapter6\\code\\6-2-cutoff-scope.py",
+  "started_at": "2026-09-13T15:45:18.430682+09:00",
+  "duration_sec": 0.11,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "9d88cee55021d7adcadf4eda17e82e1d3fa5330b90797899db6994e88eb492a2",
+  "output_sha256": "3c6b40b4eb31473665aec2639c8e80974da24439328cc6957cc934b32f46ac8a",
+  "output_log": "practice\\chapter6\\results\\6-2-cutoff-scope.log"
+}

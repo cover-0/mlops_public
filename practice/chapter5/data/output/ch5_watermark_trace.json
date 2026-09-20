@@ -1,0 +1,59 @@
+{
+  "window_size_minutes": 10,
+  "watermark_delay_minutes": 10,
+  "rule": "watermark = 관측된 최대 이벤트 시각 − 지연 허용, 창의 끝 <= watermark 이면 폐기",
+  "input_note": "민원 이벤트는 시뮬레이션 입력. 판정은 입력 파일에서 계산한 값.",
+  "per_file": [
+    {
+      "file": "batch1.json",
+      "events": 6,
+      "watermark_in_effect": null,
+      "accepted": 6,
+      "dropped": 0,
+      "dropped_cumulative": 0,
+      "max_event_time_after": "22:09",
+      "watermark_after": "21:59"
+    },
+    {
+      "file": "batch2.json",
+      "events": 5,
+      "watermark_in_effect": "21:59",
+      "accepted": 5,
+      "dropped": 0,
+      "dropped_cumulative": 0,
+      "max_event_time_after": "22:18",
+      "watermark_after": "22:08"
+    },
+    {
+      "file": "batch3.json",
+      "events": 3,
+      "watermark_in_effect": "22:08",
+      "accepted": 2,
+      "dropped": 1,
+      "dropped_cumulative": 1,
+      "max_event_time_after": "22:24",
+      "watermark_after": "22:14"
+    }
+  ],
+  "late_events": [
+    {
+      "event_id": "LATE_OK",
+      "event_time": "22:04",
+      "arrived_in": "batch2.json",
+      "watermark_at_arrival": "21:59",
+      "window": "22:00-22:10",
+      "decision": "수용",
+      "evidence": "창 22:00-22:10 강남구 count 3 → 4"
+    },
+    {
+      "event_id": "LATE_DROP",
+      "event_time": "21:49",
+      "arrived_in": "batch3.json",
+      "watermark_at_arrival": "22:08",
+      "window": "21:40-21:50",
+      "decision": "폐기",
+      "evidence": "폐기 누적 = 1"
+    }
+  ],
+  "dropped_cumulative": 1
+}

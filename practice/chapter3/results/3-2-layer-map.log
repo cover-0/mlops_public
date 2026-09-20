@@ -1,0 +1,32 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 3-2-layer-map.py
+
+=== STDOUT ===
+[1] 계층 배정 — 서비스 6개를 계층 5개에 배정
+    수집     zookeeper, kafka
+    저장     postgres
+    처리     (없음)
+    서빙     (없음)
+    모니터링   prometheus, grafana, kafka-ui
+
+[2] 계층당 서비스 수와 포트 수
+    계층      서비스   포트  없으면 실패하는 것
+    수집        2    3  유실·과부하
+    저장        1    1  재처리·감사 불가
+    처리        0    0  원천이 지표가 되지 못함
+    서빙        0    0  데이터가 서비스되지 않음
+    모니터링      3    3  침묵 실패 미발견
+    합계        6    7
+    계층 5개 대 서비스 6개 — 1대 1이 아님
+
+[3] 비어 있는 계층 2개
+    처리     채우는 시점: 5주차(스트리밍)·6주차(배치)
+    서빙     채우는 시점: 10주차(모델 배포)
+
+[4] 배정 규칙을 바꾸면 — kafka-ui를 모니터링이 아니라 수집으로 보면
+    수집     2개 → 3개
+    모니터링   3개 → 2개
+    서비스 목록은 그대로이고 배정 규칙만 바뀌었는데 계층당 개수가 달라짐
+
+output=C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter3\data\output\ch3_layer_map.json layers=5 empty=2
+
+=== STDERR ===

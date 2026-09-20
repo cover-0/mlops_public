@@ -218,10 +218,21 @@ def export_definitions(store) -> dict:
     return defs
 
 
+def reset_owned_outputs() -> None:
+    """이 실행을 다시 돌리는 데 방해가 되는 것만 비운다.
+
+    피처 저장소 디렉터리는 지난 실행의 등록 정보가 섞이지 않도록 지운다.
+    산출물 JSON과 parquet은 지우지 않는다 — 계산이 끝난 뒤 덮어쓰므로,
+    실행이 중간에 실패해도 지난 실행의 산출물이 그대로 남는다.
+    data/output에는 7-2~7-4의 산출물과 학생이 제출할 파일도 함께 있다.
+    """
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    if REPO_DIR.exists():
+        shutil.rmtree(REPO_DIR)
+
+
 def main() -> int:
-    if OUTPUT_DIR.exists():
-        shutil.rmtree(OUTPUT_DIR)
-    OUTPUT_DIR.mkdir(parents=True)
+    reset_owned_outputs()
 
     source_path = build_source_parquet()
     store = make_repo(source_path)

@@ -1,0 +1,14 @@
+{
+  "file": "5-3-watermark-trace.py",
+  "chapter_relpath": "practice\\chapter5\\code\\5-3-watermark-trace.py",
+  "started_at": "2026-09-13T15:48:23.259076+09:00",
+  "duration_sec": 0.13,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "e2ab06ebeb6cb714d5e0065056dffb1527433334d0710331535f9f21e14e82c7",
+  "output_sha256": "39681e7a46c24c6e23d1da689af0d206da66dbccbc4411f3e8d42ca018e3a948",
+  "output_log": "practice\\chapter5\\results\\5-3-watermark-trace.log"
+}

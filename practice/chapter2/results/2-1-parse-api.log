@@ -1,0 +1,24 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 2-1-parse-api.py
+
+=== STDOUT ===
+source=file:airquality_seoul_2200.json stations=40 data_time=2026-06-28 22:00 pm10_missing=0 output=C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter2\data\output\ch2_eda_summary.json
+
+[pm10_summary] {"min": 14.0, "max": 27.0, "mean": 20.025, "median": 20.0}
+[pm10_grade_counts] {"1": 28, "2": 11, "nan": 1}
+
+[측정 시각] 서로 다른 dataTime 1개 — 2026-06-28 22:00
+[결측 대조] 필드별 결측 건수 (결측 표기: None / '' / '-')
+    pm10Value    결측 0건 / 40건
+    pm25Value    결측 0건 / 40건
+    o3Value      결측 0건 / 40건
+    no2Value     결측 0건 / 40건
+    so2Value     결측 0건 / 40건
+    coValue      결측 0건 / 40건
+    khaiValue    결측 1건 / 40건
+    pm10Grade    결측 1건 / 40건
+    pm25Grade    결측 0건 / 40건
+    khaiGrade    결측 1건 / 40건
+[값은 있는데 등급이 없는 측정소] 1곳 — 강남구
+    강남구  pm10Value='21'  pm10Grade=None  khaiValue='-'
+
+=== STDERR ===

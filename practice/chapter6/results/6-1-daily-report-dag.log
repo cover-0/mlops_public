@@ -1,0 +1,10 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 6-1-daily-report-dag.py
+
+=== STDOUT ===
+
+=== STDERR ===
+Traceback (most recent call last):
+  File "C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter6\code\6-1-daily-report-dag.py", line 35, in <module>
+    import pendulum  # noqa: E402
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'pendulum'

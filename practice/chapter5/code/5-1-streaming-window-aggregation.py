@@ -20,10 +20,12 @@
 
 from __future__ import annotations
 
+import atexit
 import json
 import os
 import shutil
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -79,14 +81,42 @@ SCHEMA = StructType([
 
 
 def reset_dirs() -> None:
-    for d in (STREAM_DIR, CHECKPOINT_DIR):
-        if d.exists():
-            shutil.rmtree(d)
+    """이 실행이 다시 만드는 경로만 정리한다.
+
+    체크포인트는 이 스크립트가 만드는 상태 디렉터리이므로 통째로 비운다.
+    입력 스트림 디렉터리는 비우지 않는다 — 그 안의 배치 파일은 5-2~5-4 실습의
+    입력이기도 해서, 이 실행이 중간에 실패하면 다른 실습까지 멈추기 때문이다.
+    대신 stash_stream_files()가 실행 동안만 치웠다가 되돌린다.
+    산출물 세 개도 여기서 지우지 않는다. 계산이 끝난 뒤 덮어쓴다.
+    """
+    if CHECKPOINT_DIR.exists():
+        shutil.rmtree(CHECKPOINT_DIR)
+    for d in (STREAM_DIR, CHECKPOINT_DIR, OUTPUT_DIR):
         d.mkdir(parents=True, exist_ok=True)
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    for f in (COUNTS_PATH, REPORT_PATH, SLIDING_PATH):
-        if f.exists():
-            f.unlink()
+
+
+def stash_stream_files() -> None:
+    """스트림 디렉터리를 비우되, 프로세스가 끝날 때 원본을 되돌리도록 등록한다.
+
+    파일 소스는 "새 파일이 도착하는 것"을 micro-batch 경계로 삼으므로
+    쿼리를 시작할 때 디렉터리가 비어 있어야 한다. 그렇다고 원본을 지우면
+    실행이 중간에 실패했을 때 입력이 사라지므로, 옮겨 두었다가 복원한다.
+    이 실행이 같은 이름으로 다시 쓴 파일은 새 것을 남긴다.
+    """
+    backup = Path(tempfile.mkdtemp(prefix="ch5_stream_"))
+    moved: list[str] = []
+    for f in sorted(STREAM_DIR.glob("*.json")):
+        shutil.move(str(f), str(backup / f.name))
+        moved.append(f.name)
+
+    def restore() -> None:
+        for name in moved:
+            target = STREAM_DIR / name
+            if not target.exists():
+                shutil.move(str(backup / name), str(target))
+        shutil.rmtree(backup, ignore_errors=True)
+
+    atexit.register(restore)
 
 
 def build_spark() -> SparkSession:
@@ -102,8 +132,14 @@ def build_spark() -> SparkSession:
 
 def main() -> None:
     reset_dirs()
+    # Spark 준비가 실패하면 여기서 끝난다 — 그 전까지는 입력·산출물을 건드리지 않는다
     spark = build_spark()
     spark.sparkContext.setLogLevel("ERROR")
+
+    # 여기서부터 이 실행이 다시 만드는 파일을 정리한다
+    stash_stream_files()
+    if COUNTS_PATH.exists():
+        COUNTS_PATH.unlink()  # 아래 sink가 append 모드로 쓰므로 먼저 비운다
 
     events = (
         spark.readStream.schema(SCHEMA).json(str(STREAM_DIR))

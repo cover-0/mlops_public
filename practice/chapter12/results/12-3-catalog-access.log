@@ -1,0 +1,67 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 12-3-catalog-access.py
+
+=== STDOUT ===
+[1] 카탈로그 — 정의를 손으로 적지 않고 7주차 등록 파일에서 가져온다
+    정의 원천  data/input/ch7_feature_definitions.json (7주차 등록 추출)
+    피처 수    2개
+    - complaint_count(Int64)
+        정의      전일 확정 민원 건수(7장 일별 집계)
+        소유자    민원데이터팀(가상 — 시뮬레이션 표기)
+        개인정보  개인정보 없음(지역 단위 집계)
+        소비자    3곳 — complaint_model_v1 훈련(9장), champion 서빙(10장), 통합 MVP(13주차)
+        보존기간  3일, 등록 서비스 complaint_model_v1
+    - day_unmapped_rate(Float64)
+        정의      전일 정제 품질 — 매핑 실패율(7장 quality_check)
+        소유자    민원데이터팀(가상 — 시뮬레이션 표기)
+        개인정보  개인정보 없음(지역 단위 집계)
+        소비자    1곳 — complaint_model_v1 서비스(9장 훈련)
+        보존기간  3일, 등록 서비스 complaint_model_v1
+
+[2] 접근 요청 — 같은 판정 코드에 12건을 순서대로 넣는다
+    seq 역할                피처                행위             판정   사유
+      0 training_pipeline   complaint_count     read_value       ALLOW  정책 허용
+      1 training_pipeline   day_unmapped_rate   read_value       ALLOW  정책 허용
+      2 serving_api         complaint_count     read_value       ALLOW  정책 허용
+      3 serving_api         complaint_count     read_definition  ALLOW  정책 허용
+      4 analyst             complaint_count     read_definition  ALLOW  정책 허용
+      5 analyst             complaint_count     read_value       ALLOW  정책 허용
+      6 analyst             complaint_count     read_log         DENY   로그 열람은 감사 권한 필요
+      7 external_auditor    day_unmapped_rate   read_definition  ALLOW  정책 허용
+      8 external_auditor    complaint_count     read_log         ALLOW  정책 허용
+      9 external_auditor    complaint_count     read_value       DENY   감사 역할은 원시 값 조회 불가 — 메타데이터·로그만(목적 제한)
+     10 marketing_bot       complaint_count     read_value       DENY   미등록 역할 — 정책에 없음
+     11 analyst             resident_arrears    read_value       DENY   카탈로그 미등록 피처 — 접근의 전제는 등록
+    요청 12건 — 허용 8 / 거부 4
+
+[3] 거부 4건이 걸린 관문 — 서로 다른 지점에서 막혔다
+    analyst·complaint_count·read_log
+        3번 관문: 역할에 그 행위 권한 없음
+        요청 목적: 동료 조회 이력 확인
+    external_auditor·complaint_count·read_value
+        3번 관문: 역할에 그 행위 권한 없음
+        요청 목적: 원시 값 확인 시도
+    marketing_bot·complaint_count·read_value
+        1번 관문: 역할이 정책에 없음
+        요청 목적: 미등록 역할 조회
+    analyst·resident_arrears·read_value
+        2번 관문: 피처가 카탈로그에 없음
+        요청 목적: 가구 단위 민감 피처 조회
+
+[4] 같은 요청을 '기록만 하고 막지는 않는' 설계에 넣으면
+    로그에 남는 줄 수      12줄 — 차단 설계와 같음
+    실제로 값이 나가는 건수 8건 → 12건
+    새로 나가는 원시 값 조회 3건
+        external_auditor·complaint_count — 원시 값 확인 시도
+        marketing_bot·complaint_count — 미등록 역할 조회
+        analyst·resident_arrears — 가구 단위 민감 피처 조회
+    새로 나가는 로그 열람  1건
+        analyst·complaint_count — 동료 조회 이력 확인
+    기록은 사고를 설명할 뿐 사고를 막지 않는다
+
+[5] 로그가 뒤에 답할 수 있는 질문 — 원시 값을 읽은 주체
+    training_pipeline: 2건 — 일별 예측 모델 훈련, 훈련 데이터 품질 피처
+    serving_api: 1건 — champion 온라인 예측
+    analyst: 1건 — 월간 민원 리포트
+    목적이 함께 적혀 있어야 '등록된 목적 안의 사용이었는가'를 사후에 판정할 수 있다
+
+=== STDERR ===

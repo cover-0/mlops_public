@@ -1,0 +1,65 @@
+{
+  "input_files": [
+    "airquality_seoul_2200.json",
+    "airquality_seoul_current.json"
+  ],
+  "arrival_rule": {
+    "기본_지연_분": 3,
+    "지연_이벤트_지연_분": 72,
+    "지연_주기": 5
+  },
+  "arrival_time_is_constructed": true,
+  "window_minutes": 60,
+  "event_count": 80,
+  "late_event_count": 16,
+  "batch": {
+    "2026-06-28 22:00": {
+      "count": 40,
+      "pm10_mean": 20.02
+    },
+    "2026-06-28 23:00": {
+      "count": 40,
+      "pm10_mean": 20.77
+    }
+  },
+  "speed_grace_15": {
+    "2026-06-28 22:00": {
+      "count": 40,
+      "pm10_mean": 20.02
+    },
+    "2026-06-28 23:00": {
+      "count": 40,
+      "pm10_mean": 20.77
+    }
+  },
+  "speed_grace_10": {
+    "2026-06-28 22:00": {
+      "count": 32,
+      "pm10_mean": 19.66
+    },
+    "2026-06-28 23:00": {
+      "count": 32,
+      "pm10_mean": 20.84
+    }
+  },
+  "mismatch_before": [],
+  "mismatch_after": [
+    {
+      "window": "2026-06-28 22:00",
+      "batch_count": 40,
+      "speed_count": 32,
+      "batch_mean": 20.02,
+      "speed_mean": 19.66,
+      "missing": 8
+    },
+    {
+      "window": "2026-06-28 23:00",
+      "batch_count": 40,
+      "speed_count": 32,
+      "batch_mean": 20.77,
+      "speed_mean": 20.84,
+      "missing": 8
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,36 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 9-2-training-pairs.py
+
+=== STDOUT ===
+[1] 원천 — 7주차 확정 집계 3일 × 지역 3개
+    경로 practice/chapter7/data/input/ch6_daily/
+    일자          마포구(11440)  관악구(11620)  강남구(11680)  
+    2026-07-01            5            5            8  
+    2026-07-02            5            5            6  
+    2026-07-03            6            5            9  
+
+[2] 훈련 쌍 — (전일 건수 → 당일 건수) 6개
+    지역               전일 → 당일      전일 건수  당일 건수
+    마포구(11440)  2026-07-01 → 2026-07-02          5          5
+    마포구(11440)  2026-07-02 → 2026-07-03          5          6
+    관악구(11620)  2026-07-01 → 2026-07-02          5          5
+    관악구(11620)  2026-07-02 → 2026-07-03          5          5
+    강남구(11680)  2026-07-02 → 2026-07-03          6          9
+    강남구(11680)  2026-07-01 → 2026-07-02          8          6
+
+[3] 정규화 CSV와 지문
+    첫 줄        lawd_cd,x_prev_count,y_count
+    행 수        6행 + 머리글 1행
+    sha256       96f6b6b3ce9dcdd1da62e0284e0ceea1ec2afec24c522f6df3221ad0ab31f49e
+    9-1 기록값   96f6b6b3ce9dcdd1da62e0284e0ceea1ec2afec24c522f6df3221ad0ab31f49e
+    일치 여부    예 — 같은 데이터다
+
+[4] 원천 한 칸만 바뀌면 — 마포구 2026-07-03 건수 6 → 7
+    바뀐 쌍       (5,6) → (5,7)   나머지 5쌍은 그대로
+    sha256        07060a30f8e15e7b8b4f92e502f8acaf2403f0a85118cb5de2b096b364abaa34
+    앞에서부터 일치하는 글자 수  0
+    한 건이 바뀌면 지문 전체가 달라진다 — 부분 일치로 '조금 다르다'를 말할 수 없다
+
+증거 파일: C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter9\data\output\ch9_training_pairs.json
+CH9_2_PASS
+
+=== STDERR ===

@@ -1,0 +1,44 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 1-3-silent-failure.py
+
+=== STDOUT ===
+[1] 이 응답의 결측 — 레코드 40건
+    문자열 '-'  1건: khaiValue 1건
+    null       242건
+      coFlag       40건
+      khaiGrade    1건
+      no2Flag      40건
+      o3Flag       40건
+      pm10Flag     40건
+      pm10Grade    1건
+      pm25Flag     40건
+      so2Flag      40건
+    khaiValue가 '-'인 측정소: 강남구
+    pm10Flag는 40건 모두 null인데 khaiValue는 '-'로 온다 — 결측 표기가 필드마다 다르다
+
+[2] 결측을 0으로 채우면 — khaiValue(통합대기환경지수)
+    결측 제외   건수  39  평균 64.9  최소 49  최대 73
+    0으로 채움  건수  40  평균 63.3  최소 0  최대 73
+    평균은 64.9 → 63.3로 조금 움직인다
+    그런데 강남구의 값은 '측정 실패'에서 0, 곧 이 응답에서 가장 좋은 값이 된다
+    최솟값이 49에서 0으로 바뀐 것이 그 자리다
+
+[3] 페이지네이션을 빠뜨리면 — 한 페이지를 20건으로 가정해 재현
+    totalCount 40  저장한 건수 20  조용히 빠진 건수 20
+    pm10 평균   전체 20.0  →  앞 20건만 20.3
+    검사를 넣지 않으면 이 실행도 예외 없이 끝나고 JSON 파일도 만들어진다
+    막는 검사는 한 줄이다: len(items) == totalCount  (20 == 40 → False)
+
+[4] HTTP 상태만 검사하면
+    이 응답의 업무 코드  resultCode=00  resultMsg=NORMAL_CODE
+    업무 코드는 HTTP 상태와 별개로 response.header 안에 들어 있다
+    HTTP 200만 확인하고 저장하는 코드는 이 자리를 아예 읽지 않는다
+    막는 검사도 한 줄이다: resultCode == '00'  (현재 '00' → True)
+
+[5] 이번 호출에 결측이 없다는 것과 이 API에 결측이 없다는 것은 다르다
+    2026-06-28 22:00 호출  측정소 40개  pm10 결측 0건   (ch1_airquality_live_raw.json)
+    2026-08-31 15:00 호출  측정소 40개  pm10 결측 3건   (ch1_api_summary.json)
+    같은 코드가 같은 API를 불렀는데 한쪽은 0건, 다른 쪽은 3건이다
+
+[6] 산출물 → data/output/ch1_silent_failure.json
+
+=== STDERR ===

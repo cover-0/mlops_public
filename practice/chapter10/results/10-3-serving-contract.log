@@ -1,0 +1,39 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 10-3-serving-contract.py
+
+=== STDOUT ===
+[1] GET /health — 살아 있는가가 아니라 무엇을 서빙 중인가
+    status           ok
+    model_name       complaint_daily_forecaster
+    model_version    1
+    model_source     registry-alias
+    shadow_enabled   True
+    model_version 1 은 9장이 champion으로 승격한 버전이다
+
+[2] POST /predict — 요청 7건을 계약에 통과시킨다
+    200  정상 — 강남구, 전일 9건        {'lawd_cd': '11680', 'x_prev_count': 9} → forecast 6.0
+    200  정상 — 마포구, 전일 0건        {'lawd_cd': '11440', 'x_prev_count': 0} → forecast 6.0
+    422  음수 건수                  {'lawd_cd': '11680', 'x_prev_count': -1}
+         └ x_prev_count는 0 이상 정수여야 함
+    422  코드 자리에 한글              {'lawd_cd': '강남구', 'x_prev_count': 9}
+         └ lawd_cd는 5자리 숫자 문자열이어야 함
+    422  필드 누락                  {'x_prev_count': 9}
+         └ lawd_cd 필드 누락
+    422  코드 4자리                 {'lawd_cd': '1168', 'x_prev_count': 9}
+         └ lawd_cd는 5자리 숫자 문자열이어야 함
+    200  형식은 맞지만 없는 자치구         {'lawd_cd': '99999', 'x_prev_count': 9} → forecast 6.0
+    통과 3건 / 거절 4건
+
+[3] 스키마 계약이 보는 것과 보지 않는 것
+    형식을 어겨 거절된 요청 4건
+    형식은 맞지만 사전에 없는 자치구 코드가 통과한 요청 1건 — ['99999']
+    스키마는 값의 모양만 본다. 그 코드가 실제로 있는지는 표준 코드 사전(6주차 실습 입력)이 판정한다
+
+[4] 응답에 신원을 실을 때와 싣지 않을 때
+    신원 있음 4개 필드 — forecast 6.0, complaint_daily_forecaster v1, 출처 registry-alias
+    신원 없음 1개 필드 — forecast 6.0
+    '이 예측을 만든 모델이 무엇인가'에 답할 수 있는 쪽은 앞의 응답뿐이다
+
+증거 파일: C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter10\data\output\ch10_serving_contract.json
+CH10_SERVING_CONTRACT_OK
+
+=== STDERR ===

@@ -1,0 +1,14 @@
+{
+  "file": "2-2-drift-visualize.py",
+  "chapter_relpath": "practice\\chapter2\\code\\2-2-drift-visualize.py",
+  "started_at": "2026-09-13T16:42:53.819899+09:00",
+  "duration_sec": 1.6,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "ef27bb800892c24fd212e8c839789141a79a04a3909ea9009175e41ac5ff84d6",
+  "output_sha256": "1c64268443abab700cabbb6513a3289ae938305b25cae22de6ddabdfe6e298a8",
+  "output_log": "practice\\chapter2\\results\\2-2-drift-visualize.log"
+}

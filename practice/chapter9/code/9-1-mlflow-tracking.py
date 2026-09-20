@@ -25,6 +25,23 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 INPUT_DIR = BASE_DIR / "data" / "input"
 OUTPUT_DIR = BASE_DIR / "data" / "output"
 
+def reset_owned_outputs() -> None:
+    """이 실행을 다시 돌리는 데 방해가 되는 것만 비운다.
+
+    실험 추적 DB와 run 디렉터리는 지난 실행 기록이 섞이지 않도록 지운다.
+    산출물 JSON은 지우지 않는다 — 계산이 끝난 뒤 덮어쓰므로, 실행이 중간에
+    실패해도 지난 실행의 산출물이 그대로 남는다.
+    data/output에는 9-2~9-5의 산출물과 학생이 제출할 파일도 함께 있다.
+    """
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    targets = [OUTPUT_DIR / "mlflow.db", OUTPUT_DIR / "mlruns"]
+    targets += sorted(OUTPUT_DIR.glob("training_pairs_*.csv"))
+    for target in targets:
+        if target.is_dir():
+            shutil.rmtree(target)
+        elif target.exists():
+            target.unlink()
+
 MODEL_NAME = "complaint_daily_forecaster"
 MAE_GATE = 1.05  # 승격 게이트: 훈련 MAE가 이 값 이하일 것(베이스라인 1.0 기준 소폭 여유)
 
@@ -147,9 +164,7 @@ def main() -> int:
     import sklearn  # noqa: F401 — 조기 확인용(실제 사용은 train_and_log·report)
     from mlflow import MlflowClient
 
-    if OUTPUT_DIR.exists():
-        shutil.rmtree(OUTPUT_DIR)
-    OUTPUT_DIR.mkdir(parents=True)
+    reset_owned_outputs()
 
     # 레지스트리는 DB 백엔드가 필요하다 — 로컬 SQLite로 고정(홈 오염 방지)
     mlflow.set_tracking_uri(f"sqlite:///{OUTPUT_DIR / 'mlflow.db'}")

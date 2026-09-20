@@ -1,0 +1,43 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 10-5-release-gate.py
+
+=== STDOUT ===
+[1] 층마다 잡는 결함이 다른 이유 — 같은 식이 배치에 따라 갈린다
+    저장소 배치   /repo/practice/chapter10/code/10-1-model-api/app.py 상위 경로 5단계  parents[1] → /repo/practice/chapter10
+    이미지 배치   /app/app.py                                    상위 경로 1단계  parents[1] → IndexError: list index out of range
+    pytest와 호스트 실행은 둘 다 저장소 배치 위에서 돌아 이 가정이 항상 참이었다
+    가정이 깨지는 배치는 이미지 안뿐이므로, 컨테이너 스모크만 이 결함을 만난다
+
+[2] 배포 전 검수표를 과거 실행 증거에서 다시 계산한다
+    통과  1_자동_테스트_통과
+          판정 근거 tests.passed  /  커밋된 검수표 True
+    통과  2_서빙_신원_응답(/health가 모델 이름·버전을 답함)
+          판정 근거 host.health.model_version  /  커밋된 검수표 True
+    통과  3_알려진_입력_알려진_출력_스모크
+          판정 근거 host.forecast  /  커밋된 검수표 True
+    통과  4_잘못된_입력_거절(422)
+          판정 근거 host.invalid_input_status  /  커밋된 검수표 True
+    통과  5_컨테이너_호스트_동일_예측(환경_동등성)
+          판정 근거 container.forecast == host.forecast  /  커밋된 검수표 True
+    미달  6_모델_실물_이미지_고정_및_출처_동봉
+          판정 근거 파일 존재 검사  /  커밋된 검수표 True  ← 불일치
+    통과  7_레지스트리_버전_보존(롤백_전제)
+          판정 근거 bootstrap.challenger_version  /  커밋된 검수표 True
+    미달  8_검증_파이프라인_정의(CI_워크플로)
+          판정 근거 파일 존재 검사  /  커밋된 검수표 True  ← 불일치
+    측정값으로 판정하는 항목 6개 — 전부 재계산되어 같은 값이 나왔다
+    파일 존재로 판정하는 항목 2개 — 이 저장소에 그 파일이 없어 불일치 2건
+
+[3] 게이트 하나를 뒤집어 보면 — 컨테이너 예측이 6.1로 나왔다면
+    통과 항목 6개 → 5개, 배포 판정 중단
+    검수표가 손으로 쓰는 문서였다면 이 한 항목이 바뀌어도 문서는 그대로 남는다
+
+[4] '같은 코드'와 '같은 바이트'
+    원본          5708 바이트  줄 120개  sha256 1718607ffbd39aad…
+    줄바꿈 변환본   5588 바이트  줄 120개  sha256 ec7ec65397a3194a…
+    줄 단위 내용 동일: 예  /  바이트 동일: 아니오
+    '같은 코드로 만들었다'는 진술은 이 차이를 걸러 내지 못한다
+
+증거 파일: C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter10\data\output\ch10_release_gate.json
+CH10_RELEASE_GATE_OK
+
+=== STDERR ===

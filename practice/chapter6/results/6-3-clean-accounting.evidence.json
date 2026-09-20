@@ -1,0 +1,14 @@
+{
+  "file": "6-3-clean-accounting.py",
+  "chapter_relpath": "practice\\chapter6\\code\\6-3-clean-accounting.py",
+  "started_at": "2026-09-13T15:46:08.042989+09:00",
+  "duration_sec": 0.11,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "c3c1112d4190efa272a7defe44335b1807b5a2ab29e3e7fa879920759598d7a1",
+  "output_sha256": "ac216d036771127a61158fc25d7a471c17dedcbde9103348a53358a8f3bb5c9e",
+  "output_log": "practice\\chapter6\\results\\6-3-clean-accounting.log"
+}

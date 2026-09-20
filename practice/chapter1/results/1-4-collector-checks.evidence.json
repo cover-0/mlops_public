@@ -1,0 +1,14 @@
+{
+  "file": "1-4-collector-checks.py",
+  "chapter_relpath": "practice\\chapter1\\code\\1-4-collector-checks.py",
+  "started_at": "2026-09-13T16:48:37.913568+09:00",
+  "duration_sec": 0.13,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "7375964f3771ab70552c027e9be871e8cdddf7cf24d83e139098afad7f8a12f4",
+  "output_sha256": "25c5bba3403c6edd784a4a75c54a9288f08408bd854ce945beca2a9da5d75fdf",
+  "output_log": "practice\\chapter1\\results\\1-4-collector-checks.log"
+}

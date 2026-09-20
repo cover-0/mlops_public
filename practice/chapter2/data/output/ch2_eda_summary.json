@@ -1,29 +1,30 @@
 {
   "station_count": 40,
-  "data_time": "2026-09-09 18:00",
+  "data_time": "2026-06-28 22:00",
   "missing_by_field": {
-    "pm10Value": 1,
-    "pm25Value": 1,
-    "o3Value": 1,
-    "no2Value": 1,
-    "so2Value": 1,
-    "coValue": 1
+    "pm10Value": 0,
+    "pm25Value": 0,
+    "o3Value": 0,
+    "no2Value": 0,
+    "so2Value": 0,
+    "coValue": 0
   },
   "pm10_summary": {
-    "min": 11.0,
-    "max": 23.0,
-    "mean": 15.846,
-    "median": 15.0
+    "min": 14.0,
+    "max": 27.0,
+    "mean": 20.025,
+    "median": 20.0
   },
   "pm25_summary": {
-    "min": 1.0,
-    "max": 8.0,
-    "mean": 4.282,
-    "median": 4.0
+    "min": 6.0,
+    "max": 17.0,
+    "mean": 12.725,
+    "median": 12.5
   },
   "pm10_grade_counts": {
-    "1": 36,
-    "nan": 4
+    "1": 28,
+    "2": 11,
+    "None": 1
   },
-  "source": "live:서울"
+  "source": "file:airquality_seoul_2200.json"
 }

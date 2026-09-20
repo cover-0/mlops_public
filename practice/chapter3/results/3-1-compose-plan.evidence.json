@@ -1,0 +1,14 @@
+{
+  "file": "3-1-compose-plan.py",
+  "chapter_relpath": "practice\\chapter3\\code\\3-1-compose-plan.py",
+  "started_at": "2026-09-13T15:29:08.296961+09:00",
+  "duration_sec": 0.14,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "58812dc243f7c31942ce34c3d66dfd88e3c9948858708ad109c001d13917d58a",
+  "output_sha256": "5ffae199e73bd6d2cfb635c3a517cfc3a8ce85c922cf5968ffc3a78bcde7231c",
+  "output_log": "practice\\chapter3\\results\\3-1-compose-plan.log"
+}

@@ -1,0 +1,62 @@
+{
+  "canonical_csv_header": "lawd_cd,x_prev_count,y_count",
+  "data_fingerprint_sha256": "96f6b6b3ce9dcdd1da62e0284e0ceea1ec2afec24c522f6df3221ad0ab31f49e",
+  "one_cell_changed": {
+    "common_prefix_len": 0,
+    "count_after": 7,
+    "count_before": 6,
+    "data_fingerprint_sha256": "07060a30f8e15e7b8b4f92e502f8acaf2403f0a85118cb5de2b096b364abaa34",
+    "day": "2026-07-03",
+    "lawd_cd": "11440"
+  },
+  "pairs": [
+    {
+      "lawd_cd": "11440",
+      "x_day": "2026-07-01",
+      "x_prev_count": 5,
+      "y_count": 5,
+      "y_day": "2026-07-02"
+    },
+    {
+      "lawd_cd": "11440",
+      "x_day": "2026-07-02",
+      "x_prev_count": 5,
+      "y_count": 6,
+      "y_day": "2026-07-03"
+    },
+    {
+      "lawd_cd": "11620",
+      "x_day": "2026-07-01",
+      "x_prev_count": 5,
+      "y_count": 5,
+      "y_day": "2026-07-02"
+    },
+    {
+      "lawd_cd": "11620",
+      "x_day": "2026-07-02",
+      "x_prev_count": 5,
+      "y_count": 5,
+      "y_day": "2026-07-03"
+    },
+    {
+      "lawd_cd": "11680",
+      "x_day": "2026-07-02",
+      "x_prev_count": 6,
+      "y_count": 9,
+      "y_day": "2026-07-03"
+    },
+    {
+      "lawd_cd": "11680",
+      "x_day": "2026-07-01",
+      "x_prev_count": 8,
+      "y_count": 6,
+      "y_day": "2026-07-02"
+    }
+  ],
+  "source_days": [
+    "2026-07-01",
+    "2026-07-02",
+    "2026-07-03"
+  ],
+  "source_dir": "practice/chapter7/data/input/ch6_daily"
+}

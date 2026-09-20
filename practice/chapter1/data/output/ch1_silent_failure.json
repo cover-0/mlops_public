@@ -1,0 +1,61 @@
+{
+  "source_files": [
+    "data/output/ch1_airquality_live_raw.json",
+    "data/output/ch1_api_summary.json"
+  ],
+  "record_count": 40,
+  "null_counts": {
+    "coFlag": 40,
+    "khaiGrade": 1,
+    "no2Flag": 40,
+    "o3Flag": 40,
+    "pm10Flag": 40,
+    "pm10Grade": 1,
+    "pm25Flag": 40,
+    "so2Flag": 40
+  },
+  "dash_counts": {
+    "khaiValue": 1
+  },
+  "dash_stations": [
+    "강남구"
+  ],
+  "khai_excluding_missing": {
+    "count": 39,
+    "mean": 64.9,
+    "min": 49.0,
+    "max": 73.0
+  },
+  "khai_zero_filled": {
+    "count": 40,
+    "mean": 63.3,
+    "min": 0.0,
+    "max": 73.0
+  },
+  "pagination": {
+    "truncate_rows": 20,
+    "total_count": 40,
+    "saved": 20,
+    "dropped": 20,
+    "pm10_mean_all": 20.0,
+    "pm10_mean_truncated": 20.3,
+    "count_check_passes": false
+  },
+  "business_code": {
+    "result_code": "00",
+    "result_msg": "NORMAL_CODE",
+    "check_passes": true
+  },
+  "missing_across_two_calls": {
+    "raw_snapshot": {
+      "data_time": "2026-06-28 22:00",
+      "station_count": 40,
+      "pm10_missing": 0
+    },
+    "summary_snapshot": {
+      "data_time": "2026-08-31 15:00",
+      "station_count": 40,
+      "pm10_missing": 3
+    }
+  }
+}

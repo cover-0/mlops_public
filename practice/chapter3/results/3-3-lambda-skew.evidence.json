@@ -1,0 +1,14 @@
+{
+  "file": "3-3-lambda-skew.py",
+  "chapter_relpath": "practice\\chapter3\\code\\3-3-lambda-skew.py",
+  "started_at": "2026-09-13T15:31:55.991552+09:00",
+  "duration_sec": 0.12,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "fd5ccd89f45d4f576496fffcf29c363e66f4e9996fa8959adc33b979c5685b4d",
+  "output_sha256": "f9f45257b7dc9f6e5271eb1d9991ff2a671e9d76c72b8710e83bdba9b020d413",
+  "output_log": "practice\\chapter3\\results\\3-3-lambda-skew.log"
+}

@@ -1,0 +1,209 @@
+{
+  "champion_forecast_source": "data/output/ch13_bootstrap_summary.json",
+  "cross_checks": {
+    "2026-07-01_정제회계가_6주차_배치와_일치": true,
+    "2026-07-01_통합실행_회계와_일치": true,
+    "2026-07-01_확정집계가_6주차_배치와_일치": true,
+    "2026-07-01_회계보존식_성립": true,
+    "2026-07-02_정제회계가_6주차_배치와_일치": true,
+    "2026-07-02_통합실행_회계와_일치": true,
+    "2026-07-02_확정집계가_6주차_배치와_일치": true,
+    "2026-07-02_회계보존식_성립": true,
+    "2026-07-03_정제회계가_6주차_배치와_일치": true,
+    "2026-07-03_통합실행_회계와_일치": true,
+    "2026-07-03_확정집계가_6주차_배치와_일치": true,
+    "2026-07-03_회계보존식_성립": true,
+    "격리_1건": true,
+    "지연MAE가_통합실행과_일치": true
+  },
+  "days": {
+    "2026-07-01": {
+      "by_region": [
+        {
+          "count": 5,
+          "lawd_cd": "11440",
+          "region": "마포구"
+        },
+        {
+          "count": 5,
+          "lawd_cd": "11620",
+          "region": "관악구"
+        },
+        {
+          "count": 8,
+          "lawd_cd": "11680",
+          "region": "강남구"
+        }
+      ],
+      "quality": {
+        "alias_fixed": 4,
+        "date": "2026-07-01",
+        "dedup_dropped": 0,
+        "mapped": 18,
+        "missing": 1,
+        "physical_received": 20,
+        "preservation_ok": true,
+        "unique": 20,
+        "unmapped": 1,
+        "ws_stripped": 1
+      }
+    },
+    "2026-07-02": {
+      "by_region": [
+        {
+          "count": 5,
+          "lawd_cd": "11440",
+          "region": "마포구"
+        },
+        {
+          "count": 5,
+          "lawd_cd": "11620",
+          "region": "관악구"
+        },
+        {
+          "count": 6,
+          "lawd_cd": "11680",
+          "region": "강남구"
+        }
+      ],
+      "quality": {
+        "alias_fixed": 3,
+        "date": "2026-07-02",
+        "dedup_dropped": 11,
+        "mapped": 16,
+        "missing": 0,
+        "physical_received": 28,
+        "preservation_ok": true,
+        "unique": 17,
+        "unmapped": 1,
+        "ws_stripped": 1
+      }
+    },
+    "2026-07-03": {
+      "by_region": [
+        {
+          "count": 6,
+          "lawd_cd": "11440",
+          "region": "마포구"
+        },
+        {
+          "count": 5,
+          "lawd_cd": "11620",
+          "region": "관악구"
+        },
+        {
+          "count": 9,
+          "lawd_cd": "11680",
+          "region": "강남구"
+        }
+      ],
+      "quality": {
+        "alias_fixed": 3,
+        "date": "2026-07-03",
+        "dedup_dropped": 0,
+        "mapped": 20,
+        "missing": 1,
+        "physical_received": 22,
+        "preservation_ok": true,
+        "unique": 22,
+        "unmapped": 1,
+        "ws_stripped": 1
+      }
+    }
+  },
+  "delayed_evaluation": {
+    "labeled": 6,
+    "mae_by_target_date": {
+      "2026-07-02": 0.6667,
+      "2026-07-03": 1.3333
+    },
+    "overall_mae": 1.0
+  },
+  "predictions": [
+    {
+      "abs_error": 1.0,
+      "actual": 5,
+      "forecast": 6.0,
+      "lawd_cd": "11440",
+      "region": "마포구",
+      "target_date": "2026-07-02",
+      "x_prev_count": 5
+    },
+    {
+      "abs_error": 1.0,
+      "actual": 5,
+      "forecast": 6.0,
+      "lawd_cd": "11620",
+      "region": "관악구",
+      "target_date": "2026-07-02",
+      "x_prev_count": 5
+    },
+    {
+      "abs_error": 0.0,
+      "actual": 6,
+      "forecast": 6.0,
+      "lawd_cd": "11680",
+      "region": "강남구",
+      "target_date": "2026-07-02",
+      "x_prev_count": 8
+    },
+    {
+      "abs_error": 0.0,
+      "actual": 6,
+      "forecast": 6.0,
+      "lawd_cd": "11440",
+      "region": "마포구",
+      "target_date": "2026-07-03",
+      "x_prev_count": 5
+    },
+    {
+      "abs_error": 1.0,
+      "actual": 5,
+      "forecast": 6.0,
+      "lawd_cd": "11620",
+      "region": "관악구",
+      "target_date": "2026-07-03",
+      "x_prev_count": 5
+    },
+    {
+      "abs_error": 3.0,
+      "actual": 9,
+      "forecast": 6.0,
+      "lawd_cd": "11680",
+      "region": "강남구",
+      "target_date": "2026-07-03",
+      "x_prev_count": 6
+    },
+    {
+      "abs_error": null,
+      "actual": null,
+      "forecast": 6.0,
+      "lawd_cd": "11440",
+      "region": "마포구",
+      "target_date": "2026-07-04",
+      "x_prev_count": 6
+    },
+    {
+      "abs_error": null,
+      "actual": null,
+      "forecast": 6.0,
+      "lawd_cd": "11620",
+      "region": "관악구",
+      "target_date": "2026-07-04",
+      "x_prev_count": 5
+    },
+    {
+      "abs_error": null,
+      "actual": null,
+      "forecast": 6.0,
+      "lawd_cd": "11680",
+      "region": "강남구",
+      "target_date": "2026-07-04",
+      "x_prev_count": 9
+    }
+  ],
+  "quarantine_reasons": [
+    "json_parse_error"
+  ],
+  "quarantined": 1
+}

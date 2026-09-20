@@ -1,0 +1,79 @@
+{
+  "audited_file": "practice/chapter9/data/output/ch9_promotion_record.json",
+  "checks": [
+    {
+      "check": "항목 model_name",
+      "pass": true,
+      "question": "어느 모델인가"
+    },
+    {
+      "check": "항목 champion_version",
+      "pass": true,
+      "question": "지금 운영 중인 것은 몇 번인가"
+    },
+    {
+      "check": "항목 gate_rule",
+      "pass": true,
+      "question": "어떤 규칙으로 통과시켰는가"
+    },
+    {
+      "check": "항목 decisions",
+      "pass": true,
+      "question": "각 버전을 어떻게 판정했는가"
+    },
+    {
+      "check": "항목 reproducibility_check",
+      "pass": true,
+      "question": "그 수치가 다시 나오는가"
+    },
+    {
+      "check": "항목 data_fingerprint_sha256",
+      "pass": true,
+      "question": "어느 데이터로 훈련했는가"
+    },
+    {
+      "check": "항목 reviewer",
+      "pass": true,
+      "question": "누가 확인했는가"
+    },
+    {
+      "check": "항목 notes",
+      "pass": true,
+      "question": "어떤 제한이 붙는가"
+    },
+    {
+      "check": "지문 재계산 대조",
+      "detail": "기록 96f6b6b3ce9dcdd1… / 재계산 96f6b6b3ce9dcdd1…",
+      "pass": true,
+      "question": "기록된 지문이 원천에서 다시 나오는가"
+    },
+    {
+      "check": "champion 일치",
+      "detail": "champion v1 / 승격 판정 [1]",
+      "pass": true,
+      "question": "champion 버전이 승격 판정과 맞는가"
+    },
+    {
+      "check": "반려 이력 보존",
+      "detail": "반려 [2] — 롤백 대상이자 재시도 방지 근거",
+      "pass": true,
+      "question": "반려된 버전이 기록에 남아 있는가"
+    },
+    {
+      "check": "재현성 통과",
+      "detail": "mae_equal=True coef_equal=True",
+      "pass": true,
+      "question": "같은 설정으로 같은 결과가 나왔는가"
+    },
+    {
+      "check": "검수자 실명",
+      "detail": "reviewer='검수 담당(가상 — 시뮬레이션 표기)' — 실운영이면 이 칸이 비면 안 된다",
+      "pass": false,
+      "question": "확인한 사람이 특정되는가"
+    }
+  ],
+  "model_name": "complaint_daily_forecaster",
+  "passed": 12,
+  "recomputed_fingerprint_sha256": "96f6b6b3ce9dcdd1da62e0284e0ceea1ec2afec24c522f6df3221ad0ab31f49e",
+  "total": 13
+}

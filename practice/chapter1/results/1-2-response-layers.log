@@ -1,0 +1,42 @@
+$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 1-2-response-layers.py
+
+=== STDOUT ===
+[1] 응답의 두 계층
+    response.header   resultCode=00  resultMsg=NORMAL_CODE
+    response.body     totalCount=40  pageNo=1  numOfRows=100  items=40건
+    header는 '요청 처리가 업무적으로 성공했는가', body는 '무엇이 몇 건 왔는가'를 담는다
+
+[2] 레코드 하나의 필드 23개
+    값·등급·플래그가 한 묶음인 측정 항목 6종: so2, co, o3, no2, pm10, pm25
+      → 6종 x 3 = 18개
+    나머지 5개: dataTime, khaiGrade, khaiValue, sidoName, stationName
+    값만 저장하고 Grade·Flag를 버리면 결측이 왜 생겼는지 되짚을 근거가 사라진다
+
+[3] 첫 레코드
+    stationName  '정릉로'
+    sidoName     '서울'
+    dataTime     '2026-06-28 22:00'
+    pm10Value    '21'
+    pm10Grade    '2'
+    pm10Flag     None
+    khaiValue    '59'
+    khaiGrade    '2'
+
+[4] 숫자처럼 보이는 값의 자료형
+    문자열로 온 숫자 필드 14개: coGrade, coValue, khaiGrade, khaiValue, no2Grade, no2Value, o3Grade, o3Value, pm10Grade, pm10Value, pm25Grade, pm25Value, so2Grade, so2Value
+    JSON 숫자로 온 필드: totalCount=40, pageNo=1, numOfRows=100
+    items 안의 측정값은 전부 문자열이므로 숫자로 바꾸는 단계가 반드시 끼어든다
+
+[5] 건수를 세는 자리가 셋이다
+    totalCount   40  서버가 가진 전체 건수
+    numOfRows   100  이번 요청이 허용한 한 페이지 최대 건수
+    items        40  이번 응답으로 실제 받은 건수
+    받은 건수 == 전체 건수: 예  (한 페이지에 다 들어옴)
+
+[6] 측정 시각
+    2026-06-28 22:00  40건
+    한 응답 안의 측정 시각이 모두 같다 — 이 API는 '지금 이 시각의 전 측정소'를 준다
+
+[7] 산출물 → data/output/ch1_response_layers.json
+
+=== STDERR ===

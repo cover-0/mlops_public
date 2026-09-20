@@ -1,0 +1,63 @@
+{
+  "alias_move": {
+    "forecast_champion_v1": 6.0,
+    "forecast_champion_v3": 7.5,
+    "serve_lawd_cd": "11680",
+    "serve_prev_count": 9.0,
+    "unseen_district_forecast": null
+  },
+  "business_gate": {
+    "fail": [
+      "baseline_mean",
+      "linear"
+    ],
+    "pass": [
+      "district_mean"
+    ],
+    "threshold": 0.8
+  },
+  "candidates": [
+    {
+      "name": "baseline_mean",
+      "needs": "없음",
+      "train_mae": 1.0
+    },
+    {
+      "name": "linear",
+      "needs": "전일 건수",
+      "train_mae": 1.0455
+    },
+    {
+      "name": "district_mean",
+      "needs": "지역 코드",
+      "train_mae": 0.6667
+    }
+  ],
+  "champion_at_start": {
+    "train_mae": 1.0,
+    "version": 1
+  },
+  "data_fingerprint_sha256": "96f6b6b3ce9dcdd1da62e0284e0ceea1ec2afec24c522f6df3221ad0ab31f49e",
+  "district_means": {
+    "11440": 5.5,
+    "11620": 5.0,
+    "11680": 7.5
+  },
+  "gate_matrix": [
+    {
+      "district_mean": "승격",
+      "linear": "승격",
+      "rule": "A 절대만 (mae <= 1.05)"
+    },
+    {
+      "district_mean": "승격",
+      "linear": "반려(개선 없음)",
+      "rule": "B 상대만 (champion보다 개선)"
+    },
+    {
+      "district_mean": "승격",
+      "linear": "반려(개선 없음)",
+      "rule": "C 둘 다"
+    }
+  ]
+}

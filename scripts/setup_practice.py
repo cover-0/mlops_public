@@ -57,6 +57,7 @@ _problems: list[str] = []
 _warnings: list[str] = []
 
 
+# 환경 점검 결과와 해결 방법을 터미널에 표시한다.
 def say(mark: str, text: str, fix: str = "") -> None:
     print(f"  [{mark}] {text}")
     if fix:
@@ -67,26 +68,31 @@ def say(mark: str, text: str, fix: str = "") -> None:
         _warnings.append(text)
 
 
+# 운영체제 명령을 실행하고 표준 출력과 오류를 수집한다.
 def run(cmd: list[str], **kw) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, capture_output=True, text=True, **kw)
 
 
+# 운영체제에 맞는 주차별 Python 가상환경 실행 파일 경로를 구한다.
 def venv_python(chapter_dir: Path) -> Path:
     if platform.system() == "Windows":
         return chapter_dir / "venv" / "Scripts" / "python.exe"
     return chapter_dir / "venv" / "bin" / "python"
 
 
+# 패키지 설치 명세에서 pip가 사용하는 배포 패키지 이름을 구한다.
 def pip_name(spec) -> str:
     return spec[0] if isinstance(spec, tuple) else spec
 
 
+# 패키지 설치 명세에서 Python이 import할 모듈 이름을 구한다.
 def import_name(spec) -> str:
     return spec[1] if isinstance(spec, tuple) else spec
 
 
 # ---------------------------------------------------------------- 점검
 
+# 모든 실습의 기본 실행 환경인 Python 3.10 이상인지 확인한다.
 def check_python() -> None:
     v = sys.version_info
     if v >= (3, 10):
@@ -96,6 +102,7 @@ def check_python() -> None:
             "python.org에서 최신 버전을 설치한다.")
 
 
+# PySpark 실습에 필요한 Java가 설치됐고 최소 버전을 충족하는지 확인한다.
 def check_java(minimum: int) -> None:
     if not shutil.which("java"):
         say(FAIL, "Java를 찾을 수 없다",
@@ -114,10 +121,11 @@ def check_java(minimum: int) -> None:
             f"Temurin JDK {minimum}을 설치하고 JAVA_HOME을 그쪽으로 맞춘다.")
 
 
+# Kafka·통합 실습에 필요한 Docker CLI와 데몬의 실행 상태를 확인한다.
 def check_docker(level: str) -> bool:
     mark = FAIL if level == "required" else WARN
     if not shutil.which("docker"):
-        say(mark, "docker 명령을 찾을 수 없다", "Docker Desktop을 설치한다(부록 A).")
+        say(mark, "docker 명령을 찾을 수 없다", "Docker Desktop을 설치한다(4주차 강의자료 '시작 전 준비' 참조).")
         return False
     r = run(["docker", "info", "--format", "{{.ServerVersion}}"])
     if r.returncode != 0 or not r.stdout.strip():
@@ -127,6 +135,7 @@ def check_docker(level: str) -> bool:
     return True
 
 
+# Kafka 컨테이너 등이 사용할 로컬 포트의 점유 상태를 확인한다.
 def check_ports(ports: list[int]) -> None:
     busy = []
     for p in ports:
@@ -141,6 +150,7 @@ def check_ports(ports: list[int]) -> None:
         say(OK, f"포트 {', '.join(map(str, ports))} 사용 가능")
 
 
+# Airflow처럼 POSIX 환경이 필요한 실습을 macOS·Linux·WSL에서 실행 중인지 확인한다.
 def check_posix_only() -> None:
     if platform.system() == "Windows":
         say(FAIL, "이 실습은 Windows에서 직접 실행할 수 없다",
@@ -149,6 +159,7 @@ def check_posix_only() -> None:
         say(OK, f"{platform.system()} — 실행 가능한 환경")
 
 
+# 외부 제약 파일을 내려받는 패키지 설치에 필요한 인터넷 연결을 확인한다.
 def check_network() -> None:
     try:
         socket.create_connection(("raw.githubusercontent.com", 443), timeout=3).close()
@@ -158,6 +169,7 @@ def check_network() -> None:
             "이 실습은 설치 시 제약 파일을 내려받는다. 네트워크를 확인한다.")
 
 
+# 현재 주차 실습이 요구하는 앞 주차의 실행 산출물이 준비됐는지 확인한다.
 def check_needs(needs: list[tuple[str, str]]) -> None:
     for chap, fname in needs:
         path = REPO / "practice" / chap / "data" / "output" / fname
@@ -169,6 +181,7 @@ def check_needs(needs: list[tuple[str, str]]) -> None:
                 f"{n}장 실습을 먼저 실행한다.")
 
 
+# 공공데이터·LLM API 실습에 선택적으로 쓰는 인증키 환경변수를 확인한다.
 def check_env(names: list[str]) -> None:
     missing = [n for n in names if not os.environ.get(n)]
     if not missing:
@@ -178,6 +191,7 @@ def check_env(names: list[str]) -> None:
             "선택 항목이다. 없으면 저장된 스냅샷으로 실행한다.")
 
 
+# 주차별 가상환경에 실습용 Python 패키지가 설치됐는지 import로 확인한다.
 def check_pkgs(py: Path, pkgs: list) -> list:
     if not pkgs:
         say(OK, "설치할 외부 패키지 없음")
@@ -200,6 +214,7 @@ def check_pkgs(py: Path, pkgs: list) -> list:
 
 # ---------------------------------------------------------------- 준비
 
+# 현재 주차 실습에 격리된 Python 가상환경을 생성한다.
 def make_venv(chapter_dir: Path) -> Path:
     py = venv_python(chapter_dir)
     if py.exists():
@@ -214,6 +229,7 @@ def make_venv(chapter_dir: Path) -> Path:
     return py
 
 
+# requirements.txt에 적힌 주차별 Python 패키지를 가상환경에 설치한다.
 def install(py: Path, chapter_dir: Path, network: bool) -> None:
     req = chapter_dir / "code" / "requirements.txt"
     if not req.exists():
@@ -232,6 +248,7 @@ def install(py: Path, chapter_dir: Path, network: bool) -> None:
         say(FAIL, "패키지 설치 실패", r.stderr.strip().splitlines()[-1][:200] if r.stderr else "")
 
 
+# Kafka 등 실습에 필요한 Docker Compose 서비스를 백그라운드에서 시작한다.
 def start_compose(compose: tuple[str, list[str]]) -> None:
     chap, services = compose
     cwd = REPO / "practice" / chap
@@ -246,6 +263,7 @@ def start_compose(compose: tuple[str, list[str]]) -> None:
 
 # ---------------------------------------------------------------- 본체
 
+# 선택한 주차의 환경 점검, 가상환경 구성, 패키지 설치, 컨테이너 기동을 순서대로 수행한다.
 def main() -> int:
     ap = argparse.ArgumentParser(description="실습 환경 점검과 준비")
     ap.add_argument("chapter", type=int, help="주차 번호 (예: 4)")

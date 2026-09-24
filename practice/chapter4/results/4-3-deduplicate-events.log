@@ -1,4 +1,4 @@
-$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 4-3-deduplicate-events.py
+$ C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\venv\Scripts\python.exe 4-3-deduplicate-events.py
 
 === STDOUT ===
 [1] 입력 — 처리 기록 40건, 고유 event_id 30개
@@ -22,7 +22,7 @@ $ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Pyt
     일치: 예 — 총 관찰은 40에서 80으로 늘었지만 행 수는 30으로 그대로임
 
 {
-  "generated_at": "2026-09-13T06:44:44.953787+00:00",
+  "generated_at": "2026-09-24T09:13:06.636331+00:00",
   "input": {
     "path": "data\\input\\ch4_alo_duplicate_stream.jsonl",
     "provenance": "4장 실습 4.1 시나리오 C(at-least-once 크래시)의 실측 처리 기록 스냅샷",
@@ -52,6 +52,6 @@ $ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Pyt
   }
 }
 
-[저장] C:\Users\user\Documents\lee\class\2026-2\mlops_public\practice\chapter4\data\output\ch4_dedup_report.json
+[저장] C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\data\output\ch4_dedup_report.json
 
 === STDERR ===

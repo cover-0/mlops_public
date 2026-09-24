@@ -1,5 +1,5 @@
 {
-  "finished_at": "2026-07-07T02:21:32.660312+00:00",
+  "finished_at": "2026-09-24T08:41:17.044706+00:00",
   "topic": "public.complaint.received.v1",
   "group": "g-alo",
   "mode": "at-least-once",
@@ -11,8 +11,8 @@
   },
   "latency_ms": {
     "count": 30,
-    "mean": 19456.0,
-    "max": 19581.5
+    "mean": 20418.7,
+    "max": 20570.5
   },
-  "processed_store": "data/output/ch4_processed_g-alo.jsonl"
+  "processed_store": "data\\output\\ch4_processed_g-alo.jsonl"
 }

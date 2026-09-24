@@ -1,0 +1,29 @@
+$ C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\venv\Scripts\python.exe 4-2-kafka-consumer.py
+
+=== STDOUT ===
+{
+  "finished_at": "2026-09-24T09:13:06.487258+00:00",
+  "topic": "public.complaint.received.v1",
+  "group": "complaint-processor",
+  "mode": "at-least-once",
+  "processed_this_run": 230,
+  "partitions_seen": {
+    "0": 68,
+    "1": 90,
+    "2": 72
+  },
+  "latency_ms": {
+    "count": 230,
+    "mean": 256532.6,
+    "max": 1939057.5
+  },
+  "processed_store": "data\\output\\ch4_processed_complaint-processor.jsonl"
+}
+
+[저장] C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\data\output\ch4_consume_complaint-processor.json
+
+=== STDERR ===
+C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\code\4-2-kafka-consumer.py:58: DeprecationWarning: key_deserializer does not implement kafka.serializer.Deserializer
+  consumer = KafkaConsumer(
+C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\code\4-2-kafka-consumer.py:58: DeprecationWarning: value_deserializer does not implement kafka.serializer.Deserializer
+  consumer = KafkaConsumer(

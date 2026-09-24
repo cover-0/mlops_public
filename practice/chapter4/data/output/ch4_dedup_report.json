@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-07T02:12:34.233977+00:00",
+  "generated_at": "2026-09-24T09:13:06.636331+00:00",
   "input": {
-    "path": "data/input/ch4_alo_duplicate_stream.jsonl",
+    "path": "data\\input\\ch4_alo_duplicate_stream.jsonl",
     "provenance": "4장 실습 4.1 시나리오 C(at-least-once 크래시)의 실측 처리 기록 스냅샷",
     "records": 40,
     "distinct_event_ids": 30

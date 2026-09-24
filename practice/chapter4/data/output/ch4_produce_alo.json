@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-07T02:20:58.183619+00:00",
+  "generated_at": "2026-09-24T08:40:41.423456+00:00",
   "topic": "public.complaint.received.v1",
   "scenario": "alo",
   "acks": "all",
   "sent": 30,
-  "elapsed_sec": 0.152,
+  "elapsed_sec": 0.204,
   "partition_distribution": {
     "0": 7,
     "1": 14,

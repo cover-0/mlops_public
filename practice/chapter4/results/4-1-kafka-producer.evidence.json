@@ -1,0 +1,14 @@
+{
+  "file": "4-1-kafka-producer.py",
+  "chapter_relpath": "practice\\chapter4\\code\\4-1-kafka-producer.py",
+  "started_at": "2026-09-24T18:12:55.190003+09:00",
+  "duration_sec": 1.24,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.12",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "b6b386cebe253e3601d3ba793e2633d7ba6a239d4af08958d6803c29b29ab19c",
+  "output_sha256": "c52220376514dace8228371aae7d20f801f53ff908f193fb569fa45ef0e5546c",
+  "output_log": "practice\\chapter4\\results\\4-1-kafka-producer.log"
+}

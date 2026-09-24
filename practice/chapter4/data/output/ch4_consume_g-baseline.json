@@ -1,5 +1,5 @@
 {
-  "finished_at": "2026-07-07T02:20:23.747474+00:00",
+  "finished_at": "2026-09-24T08:40:04.967499+00:00",
   "topic": "public.complaint.received.v1",
   "group": "g-baseline",
   "mode": "at-least-once",
@@ -11,8 +11,8 @@
   },
   "latency_ms": {
     "count": 200,
-    "mean": 3.5,
-    "max": 110.7
+    "mean": 20.8,
+    "max": 140.0
   },
-  "processed_store": "data/output/ch4_processed_g-baseline.jsonl"
+  "processed_store": "data\\output\\ch4_processed_g-baseline.jsonl"
 }

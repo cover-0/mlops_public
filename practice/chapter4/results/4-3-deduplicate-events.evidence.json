@@ -1,14 +1,14 @@
 {
   "file": "4-3-deduplicate-events.py",
   "chapter_relpath": "practice\\chapter4\\code\\4-3-deduplicate-events.py",
-  "started_at": "2026-09-13T15:44:44.833264+09:00",
-  "duration_sec": 0.15,
+  "started_at": "2026-09-24T18:13:06.531010+09:00",
+  "duration_sec": 0.14,
   "exit_code": 0,
   "timed_out": false,
   "success": true,
-  "python_version": "3.13.14",
+  "python_version": "3.13.12",
   "platform": "Windows-11-10.0.26200-SP0",
   "source_sha256": "1ed0c4ca1b29cffdf759a4390baf1e217a4f5a2b80cc710aea2df10b3d0cd931",
-  "output_sha256": "aca20a3702d24072b6d494de282c8b758fb5c4fe464b2d306437209b72f26d90",
+  "output_sha256": "e3a543eec5e23108d986d3a01ea0df9225f6596fdc0907486a17c0bbda37d5bd",
   "output_log": "practice\\chapter4\\results\\4-3-deduplicate-events.log"
 }

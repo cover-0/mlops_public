@@ -1,0 +1,14 @@
+{
+  "file": "4-2-kafka-consumer.py",
+  "chapter_relpath": "practice\\chapter4\\code\\4-2-kafka-consumer.py",
+  "started_at": "2026-09-24T18:12:56.547499+09:00",
+  "duration_sec": 9.98,
+  "exit_code": 0,
+  "timed_out": false,
+  "success": true,
+  "python_version": "3.13.12",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": "ce48d50eb1170fd8c9d578a79eb66217fc54203c57059eae7bfc4e3f25342d57",
+  "output_sha256": "ef90dc09cdddb2d4160db109508818bc02cc79975c3f8b9562c5b6e647e97208",
+  "output_log": "practice\\chapter4\\results\\4-2-kafka-consumer.log"
+}

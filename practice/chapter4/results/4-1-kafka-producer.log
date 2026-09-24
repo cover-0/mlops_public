@@ -1,0 +1,51 @@
+$ C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\venv\Scripts\python.exe 4-1-kafka-producer.py
+
+=== STDOUT ===
+{
+  "generated_at": "2026-09-24T09:12:56.392913+00:00",
+  "topic": "public.complaint.received.v1",
+  "scenario": "baseline",
+  "acks": "all",
+  "sent": 200,
+  "elapsed_sec": 0.661,
+  "partition_distribution": {
+    "0": 61,
+    "1": 76,
+    "2": 63
+  },
+  "district_to_partitions": {
+    "강남구": [
+      1
+    ],
+    "관악구": [
+      0
+    ],
+    "마포구": [
+      1
+    ],
+    "성동구": [
+      0
+    ],
+    "송파구": [
+      2
+    ],
+    "용산구": [
+      2
+    ],
+    "종로구": [
+      2
+    ],
+    "중구": [
+      1
+    ]
+  },
+  "key_to_single_partition": true
+}
+
+[저장] C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\data\output\ch4_produce_baseline.json
+
+=== STDERR ===
+C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\code\4-1-kafka-producer.py:126: DeprecationWarning: key_serializer does not implement kafka.serializer.Serializer
+  main()
+C:\Users\th030\OneDrive\문서\class2MLOps\mlops_public\practice\chapter4\code\4-1-kafka-producer.py:126: DeprecationWarning: value_serializer does not implement kafka.serializer.Serializer
+  main()

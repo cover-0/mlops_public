@@ -1,0 +1,18 @@
+{
+  "finished_at": "2026-09-24T09:13:06.487258+00:00",
+  "topic": "public.complaint.received.v1",
+  "group": "complaint-processor",
+  "mode": "at-least-once",
+  "processed_this_run": 230,
+  "partitions_seen": {
+    "0": 68,
+    "1": 90,
+    "2": 72
+  },
+  "latency_ms": {
+    "count": 230,
+    "mean": 256532.6,
+    "max": 1939057.5
+  },
+  "processed_store": "data\\output\\ch4_processed_complaint-processor.jsonl"
+}

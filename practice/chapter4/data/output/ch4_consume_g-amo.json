@@ -1,5 +1,5 @@
 {
-  "finished_at": "2026-07-07T02:20:56.728971+00:00",
+  "finished_at": "2026-09-24T08:40:39.429176+00:00",
   "topic": "public.complaint.received.v1",
   "group": "g-amo",
   "mode": "at-most-once",
@@ -10,5 +10,5 @@
     "mean": null,
     "max": null
   },
-  "processed_store": "data/output/ch4_processed_g-amo.jsonl"
+  "processed_store": "data\\output\\ch4_processed_g-amo.jsonl"
 }

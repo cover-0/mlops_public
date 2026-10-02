@@ -19,6 +19,8 @@ import shutil
 import socket
 import subprocess
 import sys
+import tempfile
+import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -102,23 +104,98 @@ def check_python() -> None:
             "python.org에서 최신 버전을 설치한다.")
 
 
+# java 실행 파일의 주 버전 번호를 읽는다. 읽지 못하면 None.
+def java_major(java_exe: str) -> int | None:
+    r = run([java_exe, "-version"])
+    m = re.search(r'version "(\d+)', r.stderr or r.stdout)
+    return int(m.group(1)) if m else None
+
+
+# winget이 없거나 실패했을 때, Adoptium 공식 API에서 Temurin MSI를 직접 내려받아 설치한다.
+def install_java_msi(minimum: int) -> bool:
+    arch = "aarch64" if platform.machine().upper() in ("ARM64", "AARCH64") else "x64"
+    url = (f"https://api.adoptium.net/v3/installer/latest/{minimum}/ga/"
+           f"windows/{arch}/jdk/hotspot/normal/eclipse")
+    msi = Path(tempfile.gettempdir()) / f"temurin-jdk{minimum}.msi"
+    print(f"  Temurin JDK {minimum} 설치 파일을 내려받는다 … (약 160MB, 수 분 걸린다)")
+    try:
+        urllib.request.urlretrieve(url, msi)
+    except OSError as e:
+        print(f"  내려받기 실패: {e}")
+        return False
+    print("  설치를 시작한다 … (허용 여부를 묻는 창이 뜨면 '예')")
+    r = run(["powershell", "-NoProfile", "-Command",
+             f"$p = Start-Process msiexec -ArgumentList '/i','{msi}','/passive' "
+             f"-Verb RunAs -Wait -PassThru; exit $p.ExitCode"])
+    return r.returncode == 0
+
+
+# Temurin JDK 자동 설치. Windows는 winget → 설치 파일 직접 내려받기 순서로 시도한다.
+def install_java(minimum: int) -> bool:
+    sysname = platform.system()
+    if sysname == "Windows":
+        if shutil.which("winget"):
+            print(f"  Temurin JDK {minimum}을 winget으로 설치한다 … "
+                  "(수 분 걸린다. 허용 여부를 묻는 창이 뜨면 '예')")
+            r = run(["winget", "install", "-e", "--id",
+                     f"EclipseAdoptium.Temurin.{minimum}.JDK",
+                     "--accept-package-agreements", "--accept-source-agreements"])
+            if r.returncode == 0:
+                return True
+            print("  winget 설치가 실패했다 — 설치 파일 직접 내려받기로 전환한다")
+        return install_java_msi(minimum)
+    if sysname == "Darwin" and shutil.which("brew"):
+        print(f"  Temurin JDK {minimum}을 Homebrew로 설치한다 … (수 분 걸린다)")
+        r = run(["brew", "install", "--cask", f"temurin@{minimum}"])
+        return r.returncode == 0
+    return False
+
+
+# 설치 직후 PATH가 아직 갱신되지 않은 상태에서 Temurin 기본 설치 위치의 java를 찾는다.
+def find_installed_java(minimum: int) -> str | None:
+    if platform.system() == "Windows":
+        base = Path(os.environ.get("ProgramFiles", r"C:\Program Files")) / "Eclipse Adoptium"
+        pattern, exe_rel = f"jdk-{minimum}*", Path("bin") / "java.exe"
+    else:
+        base = Path("/Library/Java/JavaVirtualMachines")
+        pattern, exe_rel = f"temurin-{minimum}*", Path("Contents/Home/bin/java")
+    for d in sorted(base.glob(pattern), reverse=True):
+        exe = d / exe_rel
+        if exe.exists():
+            return str(exe)
+    return None
+
+
 # PySpark 실습에 필요한 Java가 설치됐고 최소 버전을 충족하는지 확인한다.
-def check_java(minimum: int) -> None:
-    if not shutil.which("java"):
-        say(FAIL, "Java를 찾을 수 없다",
-            f"PySpark 실행에 Java {minimum} 이상이 필요하다. Temurin JDK {minimum}을 설치한다.")
-        return
-    out = run(["java", "-version"]).stderr or run(["java", "-version"]).stdout
-    m = re.search(r'version "(\d+)', out)
-    if not m:
+# 없거나 버전이 낮으면(allow_install=True일 때) Temurin JDK 자동 설치를 시도한다.
+def check_java(minimum: int, allow_install: bool = False) -> None:
+    exe = shutil.which("java")
+    major = java_major(exe) if exe else None
+    if exe and major is None:
         say(WARN, "Java 버전을 읽지 못했다", "java -version 출력을 직접 확인한다.")
         return
-    major = int(m.group(1))
-    if major >= minimum:
+    if major is not None and major >= minimum:
         say(OK, f"Java {major}")
-    else:
-        say(FAIL, f"Java {major} — {minimum} 이상이 필요하다",
-            f"Temurin JDK {minimum}을 설치하고 JAVA_HOME을 그쪽으로 맞춘다.")
+        return
+
+    problem = ("Java를 찾을 수 없다" if exe is None
+               else f"Java {major} — {minimum} 이상이 필요하다")
+    if allow_install and install_java(minimum):
+        new_exe = find_installed_java(minimum) or shutil.which("java")
+        new_major = java_major(new_exe) if new_exe else None
+        if new_major is not None and new_major >= minimum:
+            note = ("PATH 반영은 새 터미널부터다. 실습 실행은 새 터미널에서 한다."
+                    if exe is None else
+                    f"기존 Java {major}가 PATH에 남아 있다. "
+                    f"JAVA_HOME을 {Path(new_exe).parent.parent}로 맞춘다.")
+            say(OK, f"Temurin JDK {minimum} 설치됨 (Java {new_major})", note)
+            return
+        say(FAIL, f"{problem} — 자동 설치 후에도 확인 실패",
+            f"새 터미널에서 java -version을 확인하고, 안 되면 Temurin JDK {minimum}을 직접 설치한다.")
+        return
+    say(FAIL, problem,
+        f"PySpark 실행에 Java {minimum} 이상이 필요하다. Temurin JDK {minimum}을 설치한다"
+        + (" (--check를 빼고 실행하면 자동 설치를 시도한다)." if not allow_install else "."))
 
 
 # Kafka·통합 실습에 필요한 Docker CLI와 데몬의 실행 상태를 확인한다.
@@ -287,7 +364,7 @@ def main() -> int:
     if spec.get("posix_only"):
         check_posix_only()
     if spec.get("java"):
-        check_java(spec["java"])
+        check_java(spec["java"], allow_install=not a.check)
     if spec.get("network"):
         check_network()
 

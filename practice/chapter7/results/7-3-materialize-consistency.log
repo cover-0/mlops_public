@@ -1,4 +1,4 @@
-$ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe 7-3-materialize-consistency.py
+$ C:\Users\user\AppData\Local\Programs\Python\Python312\python.exe 7-3-materialize-consistency.py
 
 === STDOUT ===
 [1] offline store — 피처 이력 전체 9행 (3일 × 지역구 3개)
@@ -14,7 +14,7 @@ $ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Pyt
     11680     강남구     2026-07-04T00:00:00Z         9     0.045
 
 [2] materialize — 적재 창을 명시해서 호출
-    창 [2026-07-01T00:00:00Z, 2026-07-20T00:00:00Z]
+    창 [2026-07-01T00:00:00Z, 2026-07-08T00:00:00Z]
     창 안의 원천 9행 → online store 3행(키별 최신 1행)
     11440  마포구      6  0.045  @2026-07-04T00:00:00Z
     11620  관악구      5  0.045  @2026-07-04T00:00:00Z
@@ -28,8 +28,8 @@ $ C:\Users\user\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Pyt
     checked_keys 3, all_consistent True
 
 [4] 같은 적재를 증분 호출로 하면 — 시작점이 '기준 시각 − TTL'
-    기준 시각 2026-07-20T00:00:00Z(구성값), TTL 3일
-    창 [2026-07-17T00:00:00Z, 2026-07-20T00:00:00Z]
+    기준 시각 2026-07-08T00:00:00Z(구성값), TTL 3일
+    창 [2026-07-05T00:00:00Z, 2026-07-08T00:00:00Z]
     창 안의 원천 0행 → online store 0행
     예외 없음, 오류 로그 없음 — 적재 작업은 성공으로 끝남
     이 상태에서 온라인을 조회하면

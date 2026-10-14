@@ -108,7 +108,8 @@ practice/*/data/output/*.sqlite
 # 7장 Airflow 런타임 상태(로컬 절대경로 cfg·메타데이터 DB·로그)는 커밋하지 않는다
 practice/chapter7/data/output/airflow_home/
 
-# 8장 Feast 생성물(yaml·registry·online DB에 로컬 절대경로 포함)·9장 MLflow DB는 커밋하지 않는다
+# 7·8장 Feast 생성물(registry·online DB에 parquet 원천의 로컬 절대경로 포함)·9장 MLflow DB는 커밋하지 않는다
+practice/chapter7/data/output/feature_repo/
 practice/chapter8/data/output/feature_repo/
 practice/chapter9/data/output/mlflow.db
 
@@ -132,3 +133,9 @@ practice/chapter14/code/14-1-integrated-mvp/model-api/model_export/
 # 14장 실습 필수 입력(7·9장 자산 복사본)은 전역 무시 규칙에서 제외해 추적한다
 !practice/chapter14/data/input/complaint_daily_features.parquet
 !practice/chapter14/data/input/lawd_cd_seoul.csv
+
+# 중간 미니 프로젝트 — 학번으로 만든 개인 데이터·산출물은 커밋하지 않는다
+practice/midterm/student_id.txt
+practice/midterm/data/
+practice/midterm/results/
+exam/

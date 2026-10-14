@@ -71,13 +71,16 @@ def make_repo(source_path: Path):
     from feast.types import Float64, Int64
 
     REPO_DIR.mkdir(parents=True, exist_ok=True)
+    # registry와 online_store 경로는 repo 폴더 기준 상대경로로 적는다.
+    # Windows 절대경로(C:\...)를 적으면 Feast가 앞의 드라이브 문자를 URI 스킴으로
+    # 읽어 "unsupported scheme c"로 실패한다. 상대경로는 repo_path 기준으로 풀린다.
     (REPO_DIR / "feature_store.yaml").write_text(
-        f"""project: public_complaints
-registry: {REPO_DIR / "registry.db"}
+        """project: public_complaints
+registry: registry.db
 provider: local
 online_store:
     type: sqlite
-    path: {REPO_DIR / "online_store.db"}
+    path: online_store.db
 entity_key_serialization_version: 3
 """,
         encoding="utf-8",

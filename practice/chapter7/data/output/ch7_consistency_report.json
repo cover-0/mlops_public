@@ -1,0 +1,42 @@
+{
+  "all_consistent": true,
+  "checked_keys": 3,
+  "rows": [
+    {
+      "consistent": true,
+      "lawd_cd": "11440",
+      "offline_latest": {
+        "complaint_count": 6,
+        "day_unmapped_rate": 0.045
+      },
+      "online": {
+        "complaint_count": 6,
+        "day_unmapped_rate": 0.045
+      }
+    },
+    {
+      "consistent": true,
+      "lawd_cd": "11620",
+      "offline_latest": {
+        "complaint_count": 5,
+        "day_unmapped_rate": 0.045
+      },
+      "online": {
+        "complaint_count": 5,
+        "day_unmapped_rate": 0.045
+      }
+    },
+    {
+      "consistent": true,
+      "lawd_cd": "11680",
+      "offline_latest": {
+        "complaint_count": 9,
+        "day_unmapped_rate": 0.045
+      },
+      "online": {
+        "complaint_count": 9,
+        "day_unmapped_rate": 0.045
+      }
+    }
+  ]
+}

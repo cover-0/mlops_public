@@ -48,7 +48,11 @@ def resolve_chapter_dir(chapter: str) -> Path:
     프로젝트에 chapter9 / chapter09 두 가지 번호 체계가 공존할 수 있으므로
     code/ 하위 폴더를 가진 첫 후보를 선택한다.
     """
-    candidates = [f"chapter{chapter}", f"chapter{int(chapter):02d}"]
+    if chapter.isdigit():
+        candidates = [f"chapter{chapter}", f"chapter{int(chapter):02d}"]
+    else:
+        # 장 번호가 아닌 실습 폴더(예: midterm)는 이름 그대로 찾는다
+        candidates = [chapter]
     for name in candidates:
         d = PRACTICE_DIR / name
         if (d / "code").is_dir():

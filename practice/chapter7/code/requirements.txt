@@ -1,4 +1,5 @@
-# Python 3.10+ (이 실습은 3.13에서 검증)
+# Python 3.10+ (verified on 3.13). ASCII only: pip reads this file with the
+# system locale encoding, so non-ASCII comments break `pip install -r` on cp949 Windows.
 feast==0.64.0
 pandas
 pyarrow

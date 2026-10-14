@@ -28,7 +28,9 @@ TTL = timedelta(days=3)
 
 # 구성값 — 증분 적재의 기본 시작점("현재 시각 − TTL")을 재현하려고 코드에 고정한다.
 # 실제 시계를 쓰면 실행할 때마다 창이 달라져 로그를 대조할 수 없다.
-RUN_AS_OF = datetime(2026, 7, 20, 0, 0, tzinfo=timezone.utc)
+# 마지막 피처가 확정된 2026-07-04에서 나흘 뒤로 잡는다 — 일별 배치가 나흘 멈춘 상태에
+# 해당하고, 창 [07-05, 07-08]이 피처 타임스탬프(07-02~07-04)를 모두 벗어난다.
+RUN_AS_OF = datetime(2026, 7, 8, 0, 0, tzinfo=timezone.utc)
 
 
 def iso(ts: datetime) -> str:

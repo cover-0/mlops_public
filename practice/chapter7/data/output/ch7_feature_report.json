@@ -1,0 +1,72 @@
+{
+  "consistency": {
+    "all_consistent": true,
+    "checked_keys": 3,
+    "rows": [
+      {
+        "consistent": true,
+        "lawd_cd": "11440",
+        "offline_latest": {
+          "complaint_count": 6,
+          "day_unmapped_rate": 0.045
+        },
+        "online": {
+          "complaint_count": 6,
+          "day_unmapped_rate": 0.045
+        }
+      },
+      {
+        "consistent": true,
+        "lawd_cd": "11620",
+        "offline_latest": {
+          "complaint_count": 5,
+          "day_unmapped_rate": 0.045
+        },
+        "online": {
+          "complaint_count": 5,
+          "day_unmapped_rate": 0.045
+        }
+      },
+      {
+        "consistent": true,
+        "lawd_cd": "11680",
+        "offline_latest": {
+          "complaint_count": 9,
+          "day_unmapped_rate": 0.045
+        },
+        "online": {
+          "complaint_count": 9,
+          "day_unmapped_rate": 0.045
+        }
+      }
+    ]
+  },
+  "entity_rows_requested": 4,
+  "feast_version": "0.64.0",
+  "historical_dropped_rows": [
+    {
+      "as_of": "2026-07-01 09:00:00+00:00",
+      "lawd_cd": "11620"
+    }
+  ],
+  "historical_join": [
+    {
+      "as_of": "2026-07-02T09:00:00+00:00",
+      "complaint_count": 8,
+      "day_unmapped_rate": 0.05,
+      "lawd_cd": "11680"
+    },
+    {
+      "as_of": "2026-07-03T09:00:00+00:00",
+      "complaint_count": 5,
+      "day_unmapped_rate": 0.059,
+      "lawd_cd": "11440"
+    },
+    {
+      "as_of": "2026-07-04T09:00:00+00:00",
+      "complaint_count": 9,
+      "day_unmapped_rate": 0.045,
+      "lawd_cd": "11680"
+    }
+  ]
+}

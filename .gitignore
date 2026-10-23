@@ -31,9 +31,6 @@ env/
 # 로컬 PDF 산출물 (scripts/render_pdf.py) — 커밋하지 않는다
 docs/*.pdf
 
-# 시험 문제·채점 기준 — 공개 저장소로 나가면 안 되므로 커밋하지 않는다
-exam/
-
 # IDE
 .vscode/
 .idea/
@@ -134,8 +131,7 @@ practice/chapter14/code/14-1-integrated-mvp/model-api/model_export/
 !practice/chapter14/data/input/complaint_daily_features.parquet
 !practice/chapter14/data/input/lawd_cd_seoul.csv
 
-# 중간 미니 프로젝트 — 학번으로 만든 개인 데이터·산출물은 커밋하지 않는다
-practice/midterm/student_id.txt
-practice/midterm/data/
-practice/midterm/results/
-exam/
+
+# LMS 채점 스킬은 사용자 로컬 운영 자료이므로 추적하지 않는다
+.claude/skills/lms-grading/
+.gstack/

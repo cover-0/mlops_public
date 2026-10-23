@@ -67,27 +67,38 @@ def sha256_text(text: str) -> str:
 
 # ------------------------------------------------------------------ 일 배치
 def clean_day(recs: list[dict], ds: str, mapping: dict[str, str]) -> dict:
-    """레코드를 다섯 갈래(dup·out_of_scope·missing·unmapped·mapped)로 나눠 센다.
-
-    TODO — 맨 위 설명의 일 배치 규칙 1~4를 순서대로 적용한다. 6주차 6-3-clean-accounting.py의
-    clean_day를 참고하되, 중복 제거 다음에 '마감 범위' 검사를 하나 더 넣는다.
-      · created_at 앞 10글자(예: "2026-07-02")가 ds와 다르면 out_of_scope
-      · region_raw가 None이어도 missing이다 — (rec.get("region_raw") or "").strip()
-    아래 형식으로 돌려준다. by_region은 {lawd_cd: mapped 건수}를 lawd_cd 순으로 정렬한 딕셔너리다.
-        {"physical": ..., "dup": ..., "out_of_scope": ..., "missing": ...,
-         "unmapped": ..., "mapped": ..., "by_region": {...}}
-    """
-    raise NotImplementedError("clean_day를 완성한다")
+    seen: set[str] = set()
+    dup = out_of_scope = missing = unmapped = 0
+    mapped: list[str] = []
+    for rec in recs:
+        cid = rec["complaint_id"]
+        if cid in seen:
+            dup += 1
+            continue
+        seen.add(cid)
+        if rec["created_at"][:10] != ds:
+            out_of_scope += 1
+            continue
+        name = (rec.get("region_raw") or "").strip()
+        if not name:
+            missing += 1
+            continue
+        name = ALIASES.get(name, name)
+        if name in mapping:
+            mapped.append(mapping[name])
+        else:
+            unmapped += 1
+    return {"physical": len(recs), "dup": dup, "out_of_scope": out_of_scope,
+            "missing": missing, "unmapped": unmapped, "mapped": len(mapped),
+            "by_region": dict(sorted(Counter(mapped).items()))}
 
 
 def gate(acc: dict) -> tuple[bool, float]:
-    """품질 게이트. (통과 여부, unmapped_rate)를 돌려준다.
-
-    TODO — 맨 위 설명의 품질 게이트 규칙을 그대로 구현한다.
-      · unmapped_rate = unmapped / (missing + unmapped + mapped), 소수 4자리 반올림. 분모가 0이면 0.0
-      · 총계 보존식이 성립하고 unmapped_rate <= UNMAPPED_RATE_LIMIT 이면 통과
-    """
-    raise NotImplementedError("gate를 완성한다")
+    in_scope = acc["missing"] + acc["unmapped"] + acc["mapped"]
+    rate = round(acc["unmapped"] / in_scope, 4) if in_scope else 0.0
+    preserved = acc["physical"] == (acc["dup"] + acc["out_of_scope"] + acc["missing"]
+                                    + acc["unmapped"] + acc["mapped"])
+    return preserved and rate <= UNMAPPED_RATE_LIMIT, rate
 
 
 def build_report(ds: str, acc: dict) -> dict:
@@ -135,11 +146,11 @@ def join_samples(rows: list[dict], input_dir: Path) -> list[dict]:
     for s in samples:
         as_of = datetime.fromisoformat(s["as_of"])
         mine = [r for r in rows if r["lawd_cd"] == s["lawd_cd"]]
-        # TODO — 7주차 7-4-point-in-time-join.py를 참고해 두 값을 구한다.
-        #   pit    : mine 중 known_at <= as_of 인 행에서 known_at이 가장 늦은 행.
-        #            없거나, as_of - known_at 이 TTL보다 크면 None
-        #   latest : mine 중 known_at이 가장 늦은 행. mine이 비면 None
-        raise NotImplementedError("join_samples의 pit·latest를 완성한다")
+        known = [r for r in mine if r["known_at"] <= as_of]
+        pit = max(known, key=lambda r: r["known_at"]) if known else None
+        if pit is not None and as_of - pit["known_at"] > TTL:
+            pit = None
+        latest = max(mine, key=lambda r: r["known_at"]) if mine else None
         out.append({
             "sample_id": s["sample_id"], "lawd_cd": s["lawd_cd"], "as_of": s["as_of"],
             "pit_covers": pit and pit["covers"], "pit_value": pit and pit["value"],

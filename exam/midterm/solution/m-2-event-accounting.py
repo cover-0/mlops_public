@@ -59,18 +59,25 @@ def run(batches: list[tuple[str, list[dict]]], delay_minutes: int) -> dict:
     per_batch = []
 
     for name, rows in batches:
-        # TODO 1 — 이 배치에 적용할 watermark를 정한다(규칙 4). 첫 배치는 None이다.
-        watermark = None
+        watermark = None if max_seen is None else max_seen - delay
         b_dup = b_acc = b_drop = 0
         for row in sorted(rows, key=lambda r: (r["t"], r["event_id"])):
             received += 1
-            # TODO 2 — 이미 본 event_id면 duplicates·b_dup을 1 늘리고 다음 행으로 넘어간다(규칙 3).
-            #          처음 본 event_id는 seen에 넣는다.
-            # TODO 3 — window_of(row["t"])로 창을 구하고, 창의 끝이 watermark 이하이면
-            #          dropped에 event_id를 넣고 b_drop을 1 늘린 뒤 다음 행으로 넘어간다(규칙 5).
-            # TODO 4 — 나머지는 counts[(창 시작, 지역구)]에 1을 더하고 accepted·b_acc를 1 늘린다.
-            raise NotImplementedError("run의 TODO 2~4를 완성한다")
-        # TODO 5 — 이 배치의 최대 event_time으로 max_seen을 갱신한다(규칙 6).
+            if row["event_id"] in seen:
+                duplicates += 1
+                b_dup += 1
+                continue
+            seen.add(row["event_id"])
+            w_start, w_end = window_of(row["t"])
+            if watermark is not None and w_end <= watermark:
+                dropped.append(row["event_id"])
+                b_drop += 1
+                continue
+            counts[(w_start, row["district"])] += 1
+            accepted += 1
+            b_acc += 1
+        batch_max = max(r["t"] for r in rows)
+        max_seen = batch_max if max_seen is None else max(max_seen, batch_max)
         per_batch.append({
             "batch": name,
             "watermark": None if watermark is None else f"{watermark:%H:%M:%S}",
